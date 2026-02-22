@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: hipoteses-validas
+    runtime: static
+    repo: https://github.com/lpcosta18/hipoteses-validas-site
+    branch: main
+    buildCommand: ""
+    staticPublishPath: . # A raiz do projeto
+    headers:
+      - path: /**
+        name: X-Content-Type-Options
+        value: nosniff
+    routes:
+      - type: rewrite
+        source: /**
+        destination: /index.html
+    features:
+      - name: server-side-includes
+        value: true
