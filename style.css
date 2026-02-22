@@ -31,12 +31,11 @@
 @font-face {
     font-family: 'Neue Regrade';
     src: url('fonts/NeueRegrade/NeueRegrade-Extrabold.otf') format('opentype'),
-         url('fonts/NeueRegrade/NeueRegrade-Extrabold..ttf') format('truetype');
+         url('fonts/NeueRegrade/NeueRegrade-Extrabold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
-
 
 :root {
     --ouro: #c59e43;
@@ -60,9 +59,7 @@ body {
     color: var(--cinza-escuro);
     background: var(--areia);
     line-height: 1.6;
-
 }
-
 
 .container {
     max-width: 1200px;
@@ -81,15 +78,14 @@ h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
 h2 { font-size: 2rem; margin-bottom: 1.25rem; }
 h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 
-/* Header */
-/* ===== HEADER FUNDO ESCURO ===== */
+/* ===== HEADER FUNDO AREIA ===== */
 header.header {
-    background-color: var(--cinza-escuro) ;
-	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    background-color: var(--areia) !important;  /* Fundo areia */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.2);  /* Linha dourada sutil */
+    border-bottom: 1px solid var(--ouro);  /* Linha dourada */
     padding: 5px 0;
 }
 
@@ -103,7 +99,7 @@ header.header {
     gap: 20px;
 }
 
-/* Logo - versão negativa */
+/* Logo - versão normal (não negativa) */
 .logo {
     flex-shrink: 0;
     max-width: 300px;
@@ -113,10 +109,10 @@ header.header {
     width: 100%;
     height: auto;
     display: block;
-    filter: brightness(1.2);  /* Se o logo negativo precisar de mais brilho */
+    /* Remover filter: brightness(1.2) - não necessário para logo normal */
 }
 
-/* Navegação desktop - TEXTO BRANCO */
+/* Navegação desktop - TEXTO ESCURO */
 .nav-desktop {
     flex-grow: 1;
     display: none;
@@ -138,7 +134,7 @@ header.header {
 }
 
 .nav-link {
-    color: #ffffff;  /* Texto branco */
+    color: var(--cinza-escuro);  /* Texto escuro */
     font-weight: 500;
     text-decoration: none;
     padding-bottom: 4px;
@@ -147,20 +143,20 @@ header.header {
 }
 
 .nav-link:hover {
-    color: var(--ouro-principal, #c59e43);  /* Dourado ao hover */
+    color: var(--ouro);  /* Dourado ao hover */
 }
 
 .nav-link.active {
-    color: var(--ouro-principal, #c59e43);  /* Ativo em dourado */
-    border-bottom: 2px solid var(--ouro-principal, #c59e43);
+    color: var(--ouro);  /* Ativo em dourado */
+    border-bottom: 2px solid var(--ouro);
 }
 
-/* Botão telefone - VERSÃO ESCURA SOBRE FUNDO ESCURO */
+/* Botão telefone - VERSÃO DOURADA SOBRE FUNDO CLARO */
 .btn-phone {
-    background: var(--ouro-principal, #c59e43);  /* Dourado */
-    color: var(--cinza-escuro, #333333);  /* Texto escuro */
+    background: var(--ouro);  /* Dourado */
+    color: var(--cinza-escuro);  /* Texto escuro */
     padding: 0.5rem 1.2rem;
-    border-radius: 30px;  /* Mais arredondado */
+    border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
     white-space: nowrap;
@@ -177,12 +173,12 @@ header.header {
 }
 
 .btn-phone:hover {
-    background: #ffffff;  /* Branco ao hover */
-    color: var(--cinza-escuro, #333333);
-    border-color: var(--ouro-principal, #c59e43);
+    background: var(--cinza-escuro);  /* Escuro ao hover */
+    color: var(--branco);
+    border-color: var(--ouro);
 }
 
-/* Menu mobile button - BRANCO */
+/* Menu mobile button - ESCURO */
 .menu-mobile-btn {
     display: flex;
     flex-direction: column;
@@ -204,7 +200,7 @@ header.header {
 .menu-mobile-btn span {
     width: 100%;
     height: 3px;
-    background: #ffffff;  /* Barras brancas */
+    background: var(--cinza-escuro);  /* Barras escuras */
     border-radius: 3px;
     transition: 0.3s;
 }
@@ -245,15 +241,15 @@ header.header {
     }
 }
 
-/* Menu mobile dropdown */
+/* Menu mobile dropdown - FUNDO CLARO */
 .menu-mobile {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background: #2a2a2a;  /* Cinza um pouco mais claro que o header */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    background: var(--branco);  /* Fundo branco */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     z-index: 99;
 }
 
@@ -270,28 +266,28 @@ header.header {
 .mobile-link {
     display: block;
     padding: 1rem 20px;
-    border-bottom: 1px solid #444;
-    color: #ffffff;  /* Texto branco */
+    border-bottom: 1px solid var(--cinza-claro);
+    color: var(--cinza-escuro);  /* Texto escuro */
     text-decoration: none;
     transition: background 0.3s ease;
 }
 
 .mobile-link:hover,
 .mobile-link.active {
-    background: #3a3a3a;
-    color: var(--ouro-principal, #c59e43);
+    background: var(--areia);
+    color: var(--ouro);
 }
 
 .btn-mobile-phone {
-    background: var(--ouro-principal, #c59e43);
-    color: var(--cinza-escuro, #333333);
+    background: var(--ouro);
+    color: var(--cinza-escuro);
     font-weight: 600;
     text-align: center;
 }
 
 .btn-mobile-phone:hover {
-    background: #ffffff;
-    color: var(--cinza-escuro, #333333);
+    background: var(--cinza-escuro);
+    color: var(--branco);
 }
 
 /* Hero */
@@ -614,6 +610,9 @@ header.header {
 .footer-list li {
     margin-bottom: 0.5rem;
     color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .footer-list a {
@@ -623,6 +622,13 @@ header.header {
 
 .footer-list a:hover {
     color: var(--ouro);
+}
+
+.footer-icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+    vertical-align: middle;
 }
 
 .footer-bottom {
