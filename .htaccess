@@ -1,0 +1,4 @@
+# Ativar SSI (Server Side Includes)
+Options +Includes
+AddType text/html .html
+AddOutputFilter INCLUDES .html
