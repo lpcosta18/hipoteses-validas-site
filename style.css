@@ -84,47 +84,51 @@ h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
 h2 { font-size: 2rem; margin-bottom: 1.25rem; }
 h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 
-/* Header */
+/* Header */s
+/* ===== HEADER FUNDO ESCURO ===== */
 .header {
-    background-color: var(--fundo-areia, #f3ede2);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    background-color: var(--cinza-escuro, #333333);  /* Fundo cinza escuro */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(197, 158, 67, 0.2);
-    padding: 5px 0;  /* Reduzir padding vertical */
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);  /* Linha dourada sutil */
+    padding: 5px 0;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1400px;  /* Mais largo para acomodar logo grande */
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
-    gap: 20px;  /* Espaço entre elementos */
+    gap: 20px;
 }
-/* Ajuste do logo para a nova imagem */
+
+/* Logo - versão negativa */
 .logo {
-    flex-shrink: 0;  /* Evita que o logo encolha */
-    max-width: 300px;  /* Largura máxima em desktop */
+    flex-shrink: 0;
+    max-width: 300px;
 }
+
 .logo-img {
     width: 100%;
     height: auto;
     display: block;
+    filter: brightness(1.2);  /* Se o logo negativo precisar de mais brilho */
 }
 
-/* Navegação desktop */
+/* Navegação desktop - TEXTO BRANCO */
 .nav-desktop {
-    flex-grow: 1;  /* Ocupa espaço disponível */
+    flex-grow: 1;
     display: none;
 }
 
 @media (min-width: 992px) {
     .nav-desktop {
         display: flex;
-        justify-content: center;  /* Menu centrado */
+        justify-content: center;
     }
 }
 
@@ -137,46 +141,51 @@ h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 }
 
 .nav-link {
-    color: var(--cinza-medio);
+    color: #ffffff;  /* Texto branco */
     font-weight: 500;
     text-decoration: none;
     padding-bottom: 4px;
-    white-space: nowrap;  /* Evita quebra de linha */
+    white-space: nowrap;
+    transition: color 0.3s ease;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+    color: var(--ouro-principal, #c59e43);  /* Dourado ao hover */
+}
+
 .nav-link.active {
-    color: var(--ouro-principal);
+    color: var(--ouro-principal, #c59e43);  /* Ativo em dourado */
+    border-bottom: 2px solid var(--ouro-principal, #c59e43);
 }
 
-.nav-link.active {
-    border-bottom: 2px solid var(--ouro-principal);
-}
-
-/* Botão telefone */
+/* Botão telefone - VERSÃO ESCURA SOBRE FUNDO ESCURO */
 .btn-phone {
-    background: var(--verde-confiante);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    background: var(--ouro-principal, #c59e43);  /* Dourado */
+    color: var(--cinza-escuro, #333333);  /* Texto escuro */
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;  /* Mais arredondado */
     text-decoration: none;
     font-weight: 600;
     white-space: nowrap;
     display: none;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 @media (min-width: 992px) {
     .btn-phone {
         display: inline-block;
-        flex-shrink: 0;  /* Não encolhe */
+        flex-shrink: 0;
     }
 }
 
 .btn-phone:hover {
-    background: var(--cinza-escuro);
+    background: #ffffff;  /* Branco ao hover */
+    color: var(--cinza-escuro, #333333);
+    border-color: var(--ouro-principal, #c59e43);
 }
 
-/* Menu mobile */
+/* Menu mobile button - BRANCO */
 .menu-mobile-btn {
     display: flex;
     flex-direction: column;
@@ -198,12 +207,24 @@ h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 .menu-mobile-btn span {
     width: 100%;
     height: 3px;
-    background: var(--cinza-escuro);
+    background: #ffffff;  /* Barras brancas */
     border-radius: 3px;
     transition: 0.3s;
 }
 
-/* Versão tablet (entre 768px e 992px) */
+.menu-mobile-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.menu-mobile-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-mobile-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Versão tablet */
 @media (min-width: 768px) and (max-width: 991px) {
     .logo {
         max-width: 250px;
@@ -211,7 +232,7 @@ h3 { font-size: 1.5rem; margin-bottom: 1rem; }
     
     .btn-phone {
         display: inline-block;
-        padding: 0.4rem 0.8rem;
+        padding: 0.4rem 1rem;
         font-size: 0.9rem;
     }
 }
@@ -219,11 +240,11 @@ h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 /* Versão mobile */
 @media (max-width: 767px) {
     .logo {
-        max-width: 200px;  /* Mais pequeno em telemóvel */
+        max-width: 200px;
     }
     
     .btn-phone {
-        display: none;  /* Esconder em mobile (está no menu) */
+        display: none;
     }
 }
 
@@ -234,8 +255,8 @@ h3 { font-size: 1.5rem; margin-bottom: 1rem; }
     top: 100%;
     left: 0;
     width: 100%;
-    background: var(--branco);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    background: #2a2a2a;  /* Cinza um pouco mais claro que o header */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     z-index: 99;
 }
 
@@ -252,26 +273,28 @@ h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 .mobile-link {
     display: block;
     padding: 1rem 20px;
-    border-bottom: 1px solid var(--cinza-claro);
-    color: var(--cinza-medio);
+    border-bottom: 1px solid #444;
+    color: #ffffff;  /* Texto branco */
     text-decoration: none;
+    transition: background 0.3s ease;
 }
 
 .mobile-link:hover,
 .mobile-link.active {
-    background: var(--fundo-areia);
-    color: var(--ouro-principal);
+    background: #3a3a3a;
+    color: var(--ouro-principal, #c59e43);
 }
 
 .btn-mobile-phone {
-    background: var(--verde-confiante);
-    color: white;
+    background: var(--ouro-principal, #c59e43);
+    color: var(--cinza-escuro, #333333);
     font-weight: 600;
+    text-align: center;
 }
 
 .btn-mobile-phone:hover {
-    background: var(--cinza-escuro);
-    color: white;
+    background: #ffffff;
+    color: var(--cinza-escuro, #333333);
 }
 
 /* Hero */
