@@ -86,12 +86,13 @@ h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 
 /* Header */
 .header {
-    background: var(--branco);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background-color: var(--fundo-areia, #f3ede2);  /* Areia */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);  /* Sombra mais suave */
     position: sticky;
     top: 0;
     z-index: 100;
-}
+    border-bottom: 1px solid rgba(197, 158, 67, 0.2);  /* Linha sutil dourada */
+}}
 
 .header-container {
     display: flex;
@@ -99,15 +100,17 @@ h3 { font-size: 1.5rem; margin-bottom: 1rem; }
     align-items: center;
     height: 80px;
 }
-
+/* Ajuste do logo para a nova imagem */
 .logo-img {
-    height: 60px;
+    height: 50px;  /* Ligeiramente mais pequeno para o novo logo */
     width: auto;
+    display: block;
 }
 
+/* Para mobile */
 @media (max-width: 768px) {
     .logo-img {
-        height: 45px;
+        height: 40px;
     }
 }
 
