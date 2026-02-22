@@ -60,12 +60,11 @@ body {
     color: var(--cinza-escuro);
     background: var(--areia);
     line-height: 1.6;
-    opacity: 0;
-    transition: opacity 0.3s;
+
 }
 
 body.components-loaded {
-    opacity: 1;
+
 }
 
 .container {
