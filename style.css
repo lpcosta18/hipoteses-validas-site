@@ -87,7 +87,7 @@ h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 /* Header */s
 /* ===== HEADER FUNDO ESCURO ===== */
 .header {
-    background-color: var(--cinza-escuro, #333333);  /* Fundo cinza escuro */
+    background-color: #333333 !important;  /* Cinza escuro forçado */
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     position: sticky;
     top: 0;
