@@ -163,21 +163,48 @@ header.header {
     display: none;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+   
+    /* NOVO: Alinhamento vertical */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;  /* Espaço entre ícone e texto */
+    line-height: 1;
 }
 
+/* Estilo para o ícone dentro do botão */
+.btn-phone img {
+    width: 18px;  /* Ajuste conforme tamanho do seu ícone */
+    height: 18px;
+    display: block;
+    filter: brightness(0) invert(0);  /* Mantém as cores originais do SVG */
+}
+
+/* Hover state mantém alinhamento */
+.btn-phone:hover {
+    background: #ffffff !important;
+    color: var(--cinza-escuro, #333333) !important;
+    border-color: var(--ouro-principal, #c59e43);
+}
+
+/* Para desktop */
 @media (min-width: 992px) {
     .btn-phone {
-        display: inline-block;
-        flex-shrink: 0;
+        display: inline-flex;  /* Garante que é flex também em desktop */
     }
 }
-
-.btn-phone:hover {
-    background: var(--cinza-escuro);  /* Escuro ao hover */
-    color: var(--branco);
-    border-color: var(--ouro);
+@media (max-width: 767px) {
+    .btn-phone {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+        gap: 6px;
+    }
+    
+    .btn-phone img {
+        width: 16px;
+        height: 16px;
+    }
 }
-
 /* Menu mobile button - ESCURO */
 .menu-mobile-btn {
     display: flex;
