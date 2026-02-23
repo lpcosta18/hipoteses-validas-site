@@ -228,7 +228,7 @@ header.header {
     width: 100%;
     height: 3px;
     background: var(--cinza-escuro);  /* Barras escuras */
-    border-radius: 3px;
+    border-radius: 8px;
     transition: 0.3s;
 }
 
@@ -363,6 +363,12 @@ header.header {
     text-decoration: none;
     transition: 0.3s;
     border: 2px solid transparent;
+	
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;  /* Espaço entre ícone e texto */
+    line-height: 1;
 }
 
 .btn-primary {
@@ -376,25 +382,35 @@ header.header {
 
 .btn-secondary {
     background: transparent;
-    border-color: var(--cinza-escuro);
-    color: var(--cinza-escuro);
-}
-
-.btn-secondary:hover {
-    background: var(--cinza-escuro);
-    color: white;
-}
-
-.btn-outline {
     border-color: var(--ouro);
     color: var(--ouro);
 }
 
-.btn-outline:hover {
-    background: var(--ouro);
-    color: var(--cinza-escuro);
+.btn-secondary:hover {
+    background: var(--cinza-escuro);
+	border-color: var(--cinza-escuro);
+    color: white;
 }
 
+
+/* Para desktop */
+@media (min-width: 992px) {
+    .btn {
+        display: inline-flex;  /* Garante que é flex também em desktop */
+    }
+}
+@media (max-width: 767px) {
+    .btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+        gap: 6px;
+    }
+    
+    .btn img {
+        width: 16px;
+        height: 16px;
+    }
+}
 /* Destaques */
 .destaques {
     padding: 4rem 0;
@@ -587,7 +603,7 @@ header.header {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid var(--cinza-claro);
-    border-radius: 4px;
+    border-radius: 8px;
     font-family: 'Inter', sans-serif;
 }
 
