@@ -658,10 +658,9 @@ header.header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     margin: 0 auto; /* Centraliza se necessário */
-    background-color: var(--ouro);
 }
 /* Responsivo */
 @media (max-width: 768px) {
