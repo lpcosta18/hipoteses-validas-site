@@ -654,7 +654,15 @@ header.header {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
-
+.destaque-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto; /* Centraliza se necessário */
+    background-color: var(--ouro);
+}
 /* Responsivo */
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
