@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         body: JSON.stringify(payload),
       });
       data = await res.json().catch(() => ({}));
+      console.log("[Contact form] Resposta:", res.status, data);
     } catch (err) {
       if (errorEl) {
         errorEl.textContent = "Erro de ligação. Verifique a rede e tente novamente.";
@@ -60,12 +61,13 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (res.ok && data.success) {
+    const isSuccess = res.ok && (data.success !== false);
+    if (isSuccess) {
       form.style.display = "none";
       if (successEl) successEl.style.display = "block";
     } else {
       if (errorEl) {
-        errorEl.textContent = data.error || "Ocorreu um erro. Tente novamente.";
+        errorEl.textContent = (data && data.error) || "Ocorreu um erro. Tente novamente.";
         errorEl.style.display = "block";
       }
     }

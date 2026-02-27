@@ -76,14 +76,20 @@ app.post("/api/contact", async (req, res) => {
       .setHtml(html)
       .setText(text);
 
+    console.log("[api/contact] A enviar email para", toEmail, "de", fromEmail);
     await mailerSend.email.send(emailParams);
-    return res.status(200).json({ success: true });
+    console.log("[api/contact] Email enviado com sucesso.");
+    res.setHeader("Content-Type", "application/json");
+    return res.status(200).send(JSON.stringify({ success: true }));
   } catch (err) {
-    console.error("MailerSend error:", err);
-    return res.status(500).json({
-      success: false,
-      error: "Não foi possível enviar a mensagem. Tente mais tarde ou contacte-nos por telefone.",
-    });
+    console.error("[api/contact] MailerSend error:", err?.message || err);
+    res.setHeader("Content-Type", "application/json");
+    return res.status(500).send(
+      JSON.stringify({
+        success: false,
+        error: "Não foi possível enviar a mensagem. Tente mais tarde ou contacte-nos por telefone.",
+      })
+    );
   }
 });
 
