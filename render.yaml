@@ -1,11 +1,22 @@
 services:
   - type: web
     name: hipoteses-validas
-    runtime: static
+    runtime: node
     repo: https://github.com/lpcosta18/hipoteses-validas-site
     branch: main
-    buildCommand: ""
-    staticPublishPath: . # A raiz do projeto
+    buildCommand: "npm install && npm run build"
+    startCommand: "node server.js"
+    envVars:
+      - key: MAILERSEND_API_KEY
+        sync: false
+      - key: FROM_EMAIL
+        sync: false
+      - key: FROM_NAME
+        sync: false
+      - key: TO_EMAIL
+        sync: false
+      - key: TO_NAME
+        sync: false
     headers:
       - path: /**
         name: Cache-Control

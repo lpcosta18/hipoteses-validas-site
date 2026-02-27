@@ -1,5 +1,12 @@
 /* style.css - Hipóteses Válidas - Versão Completa com Neue Regrade */
 
+/* =====================================================================
+   BASE & TOKENS
+   - Fontes
+   - Variáveis (cores, espaçamentos)
+   - Reset básico e tipografia global
+   ===================================================================== */
+
 /* ===== FONTES PERSONALIZADAS ===== */
 @font-face {
     font-family: 'Neue Regrade';
@@ -67,7 +74,7 @@ body {
     padding: 0 20px;
 }
 
-/* Tipografia */
+/* ===== TIPOGRAFIA BASE ===== */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Neue Regrade', sans-serif;
     font-weight: 700;
@@ -77,6 +84,13 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
 h2 { font-size: 2rem; margin-bottom: 1.25rem; }
 h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+/* =====================================================================
+   HEADER / NAVEGAÇÃO
+   - Header principal
+   - Navegação desktop e mobile
+   - Botão de telefone
+   ===================================================================== */
 
 /* ===== HEADER FUNDO AREIA ===== */
 header.header {
@@ -317,6 +331,14 @@ header.header {
     color: var(--branco);
 }
 
+/* =====================================================================
+   HOME / HERO & COMPONENTES COMUNS
+   - Hero
+   - Botões
+   - Destaques
+   - Trust bar
+   ===================================================================== */
+
 /* Hero */
 .hero {
     padding: 4rem 0;
@@ -411,7 +433,7 @@ header.header {
         height: 16px;
     }
 }
-/* Destaques */
+/* Destaques (cards da home) */
 .destaques {
     padding: 4rem 0;
 }
@@ -462,6 +484,14 @@ header.header {
     color: var(--ouro);
     margin: 0 0.5rem;
 }
+
+/* =====================================================================
+   PÁGINAS ESPECÍFICAS
+   - Page header genérico
+   - Sobre
+   - Serviços
+   - Contacto
+   ===================================================================== */
 
 /* Page Header */
 .page-header {
@@ -614,6 +644,24 @@ header.header {
     border-color: var(--ouro);
 }
 
+.form-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+.form-message--success {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+.form-message--error {
+    background: #ffebee;
+    color: #c62828;
+}
+
+/* =====================================================================
+   FOOTER & CTA FINAL
+   ===================================================================== */
+
 /* Footer */
 .footer {
     background: var(--cinza-escuro);
@@ -705,6 +753,10 @@ header.header {
     height: 150px;
     margin: 0 auto; /* Centraliza se necessário */
 }
+/* =====================================================================
+   AJUSTES RESPONSIVOS GERAIS
+   ===================================================================== */
+
 /* Responsivo */
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
