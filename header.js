@@ -25,9 +25,28 @@
         });
     }
 
+    function initStickyHeader() {
+        const header = document.querySelector('header.header');
+        if (!header) return;
+
+        // Verificar se já está sticky no carregamento
+        if (window.scrollY > 50) {
+            header.classList.add('sticky');
+        }
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+        });
+    }
+
     function init() {
         updateActiveMenu();
         initMobileMenu();
+        initStickyHeader();
     }
 
     if (document.readyState === "loading") {
