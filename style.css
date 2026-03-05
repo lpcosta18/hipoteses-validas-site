@@ -424,7 +424,6 @@ header.header.sticky {
 .mobile-link {
     display: block;
     padding: 1rem 20px;
-  /*  border-bottom: 1px solid var(--cinza-claro); */
     color: var(--cinza-escuro);  /* Texto escuro */
     text-decoration: none;
     transition: background 0.3s ease;
@@ -435,34 +434,7 @@ header.header.sticky {
     background: var(--areia);
     color: var(--ouro);
 }
- 
-.btn-mobile-phone {
-    background: var(--ouro);
-    color: var(--cinza-escuro);
-    font-weight: 600;
-    text-align: center;
-}
 
-.btn-mobile-phone:hover {
-    background: var(--cinza-escuro);
-    color: var(--branco);
-}
-
-.mobile-link-primary {
-    background: var(--ouro);
-    color: var(--cinza-escuro);
-}
-
-.mobile-link-primary:hover {
-    background: var(--ouro-claro);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-gold);
-}
-
-.mobile-link-primary:focus {
-    outline: 3px solid var(--ouro-claro);
-    outline-offset: 2px;
-}
 .mobile-link-phone {
     display: flex; 
     align-items: center;
@@ -482,10 +454,6 @@ header.header.sticky {
     box-shadow: var(--shadow-gold);
 }
 
-.mobile-link-phone:focus {
-    outline: 3px solid var(--ouro-claro);
-    outline-offset: 2px;
-}
 
 /* Estilo para o ícone dentro do botão telefone */
 .mobile-link-phone img {
