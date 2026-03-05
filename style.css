@@ -956,14 +956,14 @@ select:focus {
 }
 
 .footer h4 {
-    color: white;
+    color: var(--areia);
     margin-bottom: 1.5rem;
     font-family: 'Neue Regrade', sans-serif;
     font-size: 1.25rem;
 }
 
 .footer-info .footer-desc {
-    color: #ccc;
+    color: var(--areia);
     margin-top: 1rem;
     line-height: 1.6;
     max-width: 400px;
@@ -975,18 +975,27 @@ select:focus {
 
 .footer-list li {
     margin-bottom: 1rem;
-    color: #ccc;
+    color: var(--areia);
     display: flex;
     align-items: flex-start;
     gap: 10px;
 }
 
 .footer-list a {
-    color: #ccc;
+    color: var(--areia);
     text-decoration: none;
 }
 
 .footer-list a:hover {
+    color: var(--ouro);
+}
+
+.contact-list a {
+    color: var(--cinza-escuro);
+    text-decoration: none;
+}
+
+.contact-list a:hover {
     color: var(--ouro);
 }
 
@@ -1005,7 +1014,7 @@ select:focus {
 }
 
 .footer-bottom p {
-    color: #ccc;
+    color: var(--areia);
     font-size: 0.875rem;
 }
 
