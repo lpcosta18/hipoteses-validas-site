@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -lh assets/logo/*.webp)",
+      "Bash(ls -la *.png)",
+      "Bash(start index.html)"
+    ]
+  }
+}
