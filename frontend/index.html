@@ -742,7 +742,7 @@
       <polyline points="20 6 9 17 4 12"></polyline>
     </svg>
   </div>
-  <h3 class="success-title">Mensagem enviada! ✅</h3>
+  <h3 class="success-title">Mensagem enviada!</h3>
   <p class="success-message">
     Obrigado pelo teu contacto.<br>
     Entraremos em contacto brevemente.
@@ -834,9 +834,19 @@
                     </a>
                 </div>
             </div>
-            <div class="mt-6 pt-6 border-t text-center" style="border-color: rgba(255,255,255,0.1);">
-                <p class="text-sm text-cinza-medio">© 2026 Hipóteses Válidas, Lda. Todos os direitos reservados.</p>
-            </div>
+			<div class="mt-6 pt-6 border-t text-center" style="border-color: rgba(255,255,255,0.1);">
+				<p class="text-sm text-cinza-medio" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+					<span>© 2026 Hipóteses Válidas, Lda. Todos os direitos reservados.</span>
+					<span style="color: rgba(255,255,255,0.3);">|</span>
+					<a href="https://thesmoothpath.pt" target="_blank" rel="noopener noreferrer" 
+					   style="display: inline-flex; align-items: center; opacity: 0.8; transition: opacity 0.3s ease;"
+					   onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+						<img src="/assets/logo/thesmoothpath-neg.png" 
+							 alt="theSmoothPath" 
+							 style="height: 25px; width: auto;">
+					</a>
+				</p>
+			</div>
         </div>
     </footer>
     </main>
@@ -853,11 +863,11 @@
         };
     </script>
 
-	<script src="/js/contact.js" defer>
-	// =================================================================
+<!--// =================================================================
     // 📦 CARREGAR LÓGICA DO FORMULÁRIO (FICHEIRO EXTERNO)
     // =================================================================
-	</script>
+	-->
+	<script src="/js/contact.js" defer></script>
 
     <script>
         // =================================================================
