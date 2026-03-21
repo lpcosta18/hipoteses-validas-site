@@ -1,13 +1,6 @@
 // =================================================================
 // 📧 FORMULÁRIO DE CONTACTO - frontend/js/contact.js
 // =================================================================
-// Responsável por:
-// - Recolher dados do formulário
-// - Validar campos obrigatórios
-// - Chamar API /api/sendContact
-// - Mostrar feedback ao utilizador
-// =================================================================
-
 document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
 });
@@ -15,12 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
 function initContactForm() {
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
-    const formSuccess = document.getElementById('formSuccess');
     const formError = document.getElementById('formError');
     const formErrorMessage = document.getElementById('formErrorMessage');
 
-    // Validação de elementos críticos
-    if (!form || !submitBtn || !formSuccess || !formError) {
+    if (!form || !submitBtn) {
         console.error('❌ Elementos do formulário não encontrados');
         return;
     }
@@ -28,13 +19,9 @@ function initContactForm() {
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Reset UI
         hideMessages();
         let hasErrors = false;
 
-        // =================================================================
-        // 1️⃣ VALIDAÇÃO DE CAMPOS OBRIGATÓRIOS
-        // =================================================================
         const requiredFields = [
             { id: 'nome', errorId: 'nomeError', validator: v => v?.trim().length > 0 },
             { id: 'email', errorId: 'emailError', validator: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
@@ -61,22 +48,16 @@ function initContactForm() {
 
         if (hasErrors) return;
 
-        // =================================================================
-        // 2️⃣ RECOLHER DADOS DO FORMULÁRIO (APENAS CAMPOS CRUS)
-        // =================================================================
         const formData = {
             nome: document.getElementById('nome')?.value?.trim(),
             email: document.getElementById('email')?.value?.trim(),
             empresa: document.getElementById('empresa')?.value?.trim() || '',
             telemovel: document.getElementById('telemovel')?.value?.trim() || '',
-            assunto: document.getElementById('assunto')?.value?.trim(),  // ex: "fiscalidade"
+            assunto: document.getElementById('assunto')?.value?.trim(),
             mensagem: document.getElementById('mensagem')?.value?.trim(),
             privacidade: document.getElementById('privacidade')?.checked
         };
 
-        // =================================================================
-        // 3️⃣ CHAMAR API (PAYLOAD CORRETO - SEM subject/html pré-formatados)
-        // =================================================================
         setLoading(true);
 
         try {
@@ -87,7 +68,6 @@ function initContactForm() {
                     'x-api-key': API_CONFIG.apiKey
                 },
                 body: JSON.stringify({
-                    // ✅ Enviar APENAS dados do formulário (o backend formata o email)
                     nome: formData.nome,
                     email: formData.email,
                     empresa: formData.empresa,
@@ -103,7 +83,6 @@ function initContactForm() {
             if (response.ok && result.success) {
                 showSuccess();
                 form.reset();
-                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
                 throw new Error(result.error || 'Erro ao enviar mensagem');
             }
@@ -128,9 +107,6 @@ function initContactForm() {
         }
     });
 
-    // =================================================================
-    // 4️⃣ REMOVER ERROS AO COMEÇAR A ESCREVER (UX)
-    // =================================================================
     ['nome', 'email', 'assunto', 'mensagem'].forEach(fieldId => {
         const el = document.getElementById(fieldId);
         el?.addEventListener('input', () => {
@@ -142,10 +118,6 @@ function initContactForm() {
     });
 }
 
-// =================================================================
-// 🎨 UI HELPERS
-// =================================================================
-
 function showError(el, message) {
     if (message) el.textContent = message;
     el.classList.add('visible');
@@ -156,31 +128,29 @@ function hideError(el) {
 }
 
 function hideMessages() {
-    document.getElementById('formSuccess')?.classList.remove('visible');
+    document.getElementById('formSuccessCard')?.classList.remove('visible');
     document.getElementById('formError')?.classList.remove('visible');
 }
 
-// Substitui showSuccess() por:
 function showSuccess() {
-  const form = document.getElementById('contactForm');
-  const successCard = document.getElementById('formSuccessCard');
-  
-  if (form) form.classList.add('hidden');
-  if (successCard) {
-    successCard.classList.add('visible');
-    successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-  if (form) form.reset();
+    const form = document.getElementById('contactForm');
+    const successCard = document.getElementById('formSuccessCard');
+    
+    if (form) form.classList.add('hidden');
+    if (successCard) {
+        successCard.classList.add('visible');
+        successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    if (form) form.reset();
 }
 
-// Adiciona esta função:
 function resetFormUI() {
-  const form = document.getElementById('contactForm');
-  const successCard = document.getElementById('formSuccessCard');
-  
-  if (form) form.classList.remove('hidden');
-  if (successCard) successCard.classList.remove('visible');
-  document.querySelectorAll('.form-error').forEach(el => el.classList.remove('visible'));
+    const form = document.getElementById('contactForm');
+    const successCard = document.getElementById('formSuccessCard');
+    
+    if (form) form.classList.remove('hidden');
+    if (successCard) successCard.classList.remove('visible');
+    document.querySelectorAll('.form-error').forEach(el => el.classList.remove('visible'));
 }
 
 function setLoading(loading) {
