@@ -58,19 +58,19 @@
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--areia);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--ouro);
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--ouro-claro);
-        }
+        ::-webkit-scrollbar { width: 8px; }
+					   
+		 
+        ::-webkit-scrollbar-track { background: var(--areia); }
+									 
+		 
+        ::-webkit-scrollbar-thumb { background: var(--ouro); border-radius: 4px; }
+									
+							   
+		 
+        ::-webkit-scrollbar-thumb:hover { background: var(--ouro-claro); }
+										  
+		 
 
         /* Glassmorphism */
         .glass {
@@ -102,84 +102,84 @@
         }
 
         /* Animations */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
+					 
+					   
+										
+        .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+		 
 
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+							 
+					   
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+		 
 
-        .fade-in-left {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
+					   
+					   
+										 
+        .fade-in-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+		 
 
-        .fade-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
+							   
+					   
+        .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+		 
 
-        .fade-in-right {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
+						
+					   
+										
+        .fade-in-right { opacity: 0; transform: translateX(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+		 
 
-        .fade-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
+								
+					   
+        .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+		 
 
         /* Background */
         .bg-mesh {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+				   
+					
+						 
+						  
+						
             background: linear-gradient(180deg, var(--areia) 0%, #f0ede6 100%);
         }
 
         .blob {
-            position: absolute;
-            filter: blur(80px);
-            opacity: 0.35;
-            border-radius: 50%;
+            position: absolute; filter: blur(80px); opacity: 0.35; border-radius: 50%;
+							   
+						  
+							   
             animation: move 25s infinite alternate ease-in-out;
         }
 
-        .blob-1 {
-            top: 5%;
-            right: 10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--ouro-claro) 0%, transparent 70%);
-            animation-delay: 0s;
-        }
+				 
+					
+					   
+						 
+						  
+        .blob-1 { top: 5%; right: 10%; width: 500px; height: 500px; background: radial-gradient(circle, var(--ouro-claro) 0%, transparent 70%); animation-delay: 0s; }
+								
+		 
 
-        .blob-2 {
-            bottom: 10%;
-            left: 5%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(197, 158, 67, 0.25) 0%, transparent 70%);
-            animation-delay: -8s;
-        }
+				 
+						
+					 
+						 
+						  
+        .blob-2 { bottom: 10%; left: 5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(197, 158, 67, 0.25) 0%, transparent 70%); animation-delay: -8s; }
+								 
+		 
 
-        .blob-3 {
-            top: 40%;
-            left: 50%;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(229, 194, 142, 0.2) 0%, transparent 70%);
-            animation-delay: -15s;
-        }
+				 
+					 
+					  
+						 
+						  
+        .blob-3 { top: 40%; left: 50%; width: 350px; height: 350px; background: radial-gradient(circle, rgba(229, 194, 142, 0.2) 0%, transparent 70%); animation-delay: -15s; }
+								  
+		 
 
         @keyframes move {
             0% { transform: translate(0, 0) scale(1); }
@@ -190,185 +190,267 @@
         }
 
         /* Nav Link */
-        .nav-link {
-            position: relative;
-            color: var(--cinza-medio);
-        }
+				   
+							   
+        .nav-link { position: relative; color: var(--cinza-medio); }
+		 
 
-        .nav-link:hover {
-            color: var(--ouro);
-        }
+						 
+        .nav-link:hover { color: var(--ouro); }
+		 
 
         .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+							   
+					 
+						
+						 
+					
             background: linear-gradient(90deg, var(--ouro), var(--ouro-claro));
             transition: width 0.3s ease;
         }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
+        .nav-link:hover::after { width: 100%; }
+						
+		 
 
         /* Button Styles */
         .btn-primary {
             background: linear-gradient(135deg, var(--ouro) 0%, var(--ouro-claro) 100%);
-            color: white;
-            transition: all 0.3s ease;
-        }
+						 
+									  
+		 
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(197, 158, 67, 0.5);
-        }
+							
+										
+																  
+		 
 
-        .btn-secondary {
-            border: 2px solid var(--ouro);
-            color: var(--ouro);
-            transition: all 0.3s ease;
-        }
+						
+										  
+							   
+            color: white; transition: all 0.3s ease;
+		 
 
-        .btn-secondary:hover {
-            background: var(--ouro);
-            color: white;
+							  
+									
+						 
         }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(197, 158, 67, 0.5); }
+        .btn-secondary { border: 2px solid var(--ouro); color: var(--ouro); transition: all 0.3s ease; }
+        .btn-secondary:hover { background: var(--ouro); color: white; }
 
         /* Line Decoration */
         .line-decoration {
-            width: 80px;
-            height: 3px;
+            width: 80px; height: 3px;
+						
             background: linear-gradient(90deg, var(--ouro), var(--ouro-claro));
-            margin: 1.5rem 0;
-            border-radius: 2px;
+							 
+            margin: 1.5rem 0; border-radius: 2px;
         }
 
         /* Image Hover Effect */
-        .img-container {
-            overflow: hidden;
-            position: relative;
-        }
+						
+							 
+        .img-container { overflow: hidden; position: relative; }
+		 
 
-        .img-container img {
-            transition: transform 0.6s ease;
-        }
+							
+        .img-container img { transition: transform 0.6s ease; }
+		 
 
-        .img-container:hover img {
-            transform: scale(1.05);
-        }
+        .img-container:hover img { transform: scale(1.05); }
+								   
+		 
 
         /* Service Card */
         .service-card {
-            background: white;
-            border: 1px solid rgba(197, 158, 67, 0.15);
+							  
+            background: white; border: 1px solid rgba(197, 158, 67, 0.15);
             transition: all 0.4s ease;
         }
 
         .service-card:hover {
-            border-color: var(--ouro);
-            transform: translateY(-8px);
+									  
+            border-color: var(--ouro); transform: translateY(-8px);
             box-shadow: 0 20px 40px -10px rgba(197, 158, 67, 0.2);
         }
 
         .service-icon {
-            width: 60px;
-            height: 60px;
+						
+            width: 60px; height: 60px;
             background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+						  
+								
+									
             transition: all 0.3s ease;
         }
+        .service-card:hover .service-icon { transform: rotate(10deg) scale(1.1); }
+										   
+												
+		 
 
-        .service-card:hover .service-icon {
-            transform: rotate(10deg) scale(1.1);
-        }
 
         /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
+			  
+        html { scroll-behavior: smooth; }
+		 
 
         /* Selection */
-        ::selection {
-            background: var(--ouro);
-            color: white;
-        }
+					 
+        ::selection { background: var(--ouro); color: white; }
+						 
+		 
 
         /* Map Container */
         .map-container {
-            border-radius: 20px;
-            overflow: hidden;
+            border-radius: 20px; overflow: hidden;
+							 
             border: 1px solid rgba(197, 158, 67, 0.2);
         }
 
         /* Logo Styles */
-        .logo-header {
-            height: 45px;
-            width: auto;
-        }
+        .logo-header { height: 45px; width: auto; }
+						 
+						
+		 
 
-        .logo-footer {
-            height: 40px;
-            width: auto;
-        }
+        .logo-footer { height: 40px; width: auto; }
+						 
+						
+		 
 
-        .logo-icon {
-            height: 32px;
-            width: 32px;
-        }
+					
+        .logo-icon { height: 32px; width: 32px; }
+						
+		 
 
         /* Color Utility Classes */
-        .text-ouro {
-            color: var(--ouro);
-        }
+        .text-ouro { color: var(--ouro); }
+							   
+        .text-ouro-claro { color: var(--ouro-claro); }
+        .text-cinza-escuro { color: var(--cinza-escuro); }
+        .text-cinza-medio { color: var(--cinza-medio); }
+        .text-cinza-claro { color: var(--cinza-claro); }
+        .text-areia { color: var(--areia); }
+        .bg-ouro { background-color: var(--ouro); }
+        .bg-ouro-claro { background-color: var(--ouro-claro); }
+        .bg-cinza-escuro { background-color: var(--cinza-escuro); }
+        .bg-cinza-medio { background-color: var(--cinza-medio); }
+        .bg-cinza-claro { background-color: var(--cinza-claro); }
+        .bg-areia { background-color: var(--areia); }
 
-        .text-ouro-claro {
-            color: var(--ouro-claro);
-        }
-
-        .text-cinza-escuro {
+        /* Form Styles */
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(197, 158, 67, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
             color: var(--cinza-escuro);
+            transition: all 0.2s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--ouro);
+            box-shadow: 0 0 0 3px rgba(197, 158, 67, 0.1);
+        }
+        .form-input::placeholder { color: var(--cinza-medio); }
+
+        .form-select {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(197, 158, 67, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: var(--cinza-escuro);
+            transition: all 0.2s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+        .form-select:focus {
+            outline: none;
+            border-color: var(--ouro);
+            box-shadow: 0 0 0 3px rgba(197, 158, 67, 0.1);
         }
 
-        .text-cinza-medio {
-            color: var(--cinza-medio);
+        .form-textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(197, 158, 67, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: var(--cinza-escuro);
+            transition: all 0.2s ease;
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--ouro);
+            box-shadow: 0 0 0 3px rgba(197, 158, 67, 0.1);
         }
 
-        .text-cinza-claro {
-            color: var(--cinza-claro);
+        .form-checkbox {
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid rgba(197, 158, 67, 0.5);
+            border-radius: 0.25rem;
+            accent-color: var(--ouro);
+            cursor: pointer;
         }
 
-        .text-areia {
-            color: var(--areia);
+        .form-error {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        .form-error.visible { display: block; }
+
+        .form-success {
+            color: #16a34a;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            padding: 1rem;
+            background: rgba(22, 163, 74, 0.1);
+            border: 1px solid rgba(22, 163, 74, 0.3);
+            border-radius: 0.5rem;
+            display: none;
+        }
+        .form-success.visible { display: block; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .bg-ouro {
-            background-color: var(--ouro);
+        .btn-loading {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.8;
         }
-
-        .bg-ouro-claro {
-            background-color: var(--ouro-claro);
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            top: 50%;
+            left: 50%;
+            margin: -0.5rem 0 0 -0.5rem;
+            border: 2px solid transparent;
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
         }
-
-        .bg-cinza-escuro {
-            background-color: var(--cinza-escuro);
-        }
-
-        .bg-cinza-medio {
-            background-color: var(--cinza-medio);
-        }
-
-        .bg-cinza-claro {
-            background-color: var(--cinza-claro);
-        }
-
-        .bg-areia {
-            background-color: var(--areia);
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -516,7 +598,7 @@
                                 <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Escritório de contabilidade" class="w-full h-80 object-cover rounded-2xl" loading="lazy">
                             </div>
                             <div class="mt-6 text-center">
-                                <h3 class="text-2xl font-bold mb-2" class="font-playfair-displaytext-cinza-escuro">Ao Seu Lado</h3>
+                                <h3 class="text-2xl font-bold mb-2 text-cinza-escuro">Ao Seu Lado</h3>
                                 <p class="text-cinza-medio">Proximidade e disponibilidade para o seu negócio</p>
                             </div>
                         </div>
@@ -545,7 +627,7 @@
                     <div class="service-icon mb-6">
                         <i class="fas fa-calculator text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3" class="font-playfair-displaytext-cinza-escuro">Contabilidade</h3>
+                    <h3 class="text-xl font-bold mb-3 text-cinza-escuro">Contabilidade</h3>
                     <p class="text-sm text-cinza-medio">
                         Acompanhamento contabilístico completo para empresários, PME's e outras entidades.
                     </p>
@@ -556,7 +638,7 @@
                     <div class="service-icon mb-6">
                         <i class="fas fa-file-invoice-dollar text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3" class="font-playfair-displaytext-cinza-escuro">Fiscalidade</h3>
+                    <h3 class="text-xl font-bold mb-3 text-cinza-escuro">Fiscalidade</h3>
                     <p class="text-sm text-cinza-medio">
                         Apoio especializado em IRS, IRC, IVA e demais obrigações fiscais.
                     </p>
@@ -567,7 +649,7 @@
                     <div class="service-icon mb-6">
                         <i class="fas fa-chart-line text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3" class="font-playfair-displaytext-cinza-escuro">Apoio à Gestão</h3>
+                    <h3 class="text-xl font-bold mb-3 text-cinza-escuro">Apoio à Gestão</h3>
                     <p class="text-sm text-cinza-medio">
                         Consultoria estratégica para ajudar os clientes a crescerem de forma sustentável.
                     </p>
@@ -578,7 +660,7 @@
                     <div class="service-icon mb-6">
                         <i class="fas fa-users text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3" class="font-playfair-displaytext-cinza-escuro">Recursos Humanos</h3>
+                    <h3 class="text-xl font-bold mb-3 text-cinza-escuro">Recursos Humanos</h3>
                     <p class="text-sm text-cinza-medio">
                         Processamento de salários e gestão da Segurança Social.
                     </p>
@@ -589,7 +671,7 @@
                     <div class="service-icon mb-6">
                         <i class="fas fa-shield-alt text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3" class="font-playfair-displaytext-cinza-escuro">Mediação de Seguros</h3>
+                    <h3 class="text-xl font-bold mb-3 text-cinza-escuro">Mediação de Seguros</h3>
                     <p class="text-sm text-cinza-medio">
                         Soluções de proteção para o seu negócio e família.
                     </p>
@@ -600,7 +682,7 @@
                     <div class="service-icon mb-6" style="background: white;">
                         <i class="fas fa-comments text-2xl" style="color: var(--ouro);"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3" class="font-playfair-displaytext-white">Diagnóstico Gratuito</h3>
+                    <h3 class="text-xl font-bold mb-3 text-white">Diagnóstico Gratuito</h3>
                     <p class="text-sm mb-4 text-white/90">
                         Não sabe qual o serviço que precisa? Fale connosco.
                     </p>
@@ -628,7 +710,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Contact Info -->
                 <div class="glass rounded-3xl p-8 fade-in-left" style="border-color: rgba(197, 158, 67, 0.2);">
-                    <h3 class="text-2xl font-bold mb-6" class="font-playfair-displaytext-cinza-escuro">Informação de Contacto</h3>
+                    <h3 class="text-2xl font-bold mb-6 text-cinza-escuro">Informação de Contacto</h3>
                     
                     <div class="space-y-6">
                         <div class="flex items-start gap-4">
@@ -690,30 +772,43 @@
 
                 <!-- Contact Form -->
                 <div class="glass rounded-3xl p-8 fade-in-right" style="border-color: rgba(197, 158, 67, 0.2); transition-delay: 200ms;">
-                    <h3 class="text-2xl font-bold mb-6" class="font-playfair-displaytext-cinza-escuro">Envie-nos uma Mensagem</h3>
+                    <h3 class="text-2xl font-bold mb-6 text-cinza-escuro">Envie-nos uma Mensagem</h3>
                     
-                    <form class="space-y-5">
+                    <!-- Success/Error Messages -->
+                    <div id="formSuccess" class="form-success">
+                        ✅ Mensagem enviada com sucesso! Entraremos em contacto brevemente.
+                    </div>
+                    <div id="formError" class="form-error">
+                        ❌ <span id="formErrorMessage">Erro ao enviar mensagem.</span>
+                    </div>
+                    
+                    <form id="contactForm" class="space-y-5" novalidate>
                         <div>
-                            <label for="name" class="block text-sm font-medium mb-2 text-cinza-medio">Nome *</label>
-                            <input type="text" id="name" required class="w-full bg-white/50 border rounded-lg px-4 py-3 focus:ring-2 transition-colors" style="border-color: rgba(197, 158, 67, 0.3); color: var(--cinza-escuro);" placeholder="O seu nome" autocomplete="name">
+                            <label for="nome" class="block text-sm font-medium mb-2 text-cinza-medio">Nome *</label>
+                            <input type="text" id="nome" name="nome" required class="form-input" placeholder="O seu nome" autocomplete="name">
+                            <p class="form-error" id="nomeError">Este campo é obrigatório</p>
                         </div>
+                        
                         <div>
-                            <label for="company" class="block text-sm font-medium mb-2 text-cinza-medio">Empresa</label>
-                            <input type="text" id="company" class="w-full bg-white/50 border rounded-lg px-4 py-3 focus:ring-2 transition-colors" style="border-color: rgba(197, 158, 67, 0.3); color: var(--cinza-escuro);" placeholder="Nome da empresa" autocomplete="organization">
+                            <label for="empresa" class="block text-sm font-medium mb-2 text-cinza-medio">Empresa</label>
+                            <input type="text" id="empresa" name="empresa" class="form-input" placeholder="Nome da empresa" autocomplete="organization">
                         </div>
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label for="email" class="block text-sm font-medium mb-2 text-cinza-medio">Email *</label>
-                                <input type="email" id="email" required class="w-full bg-white/50 border rounded-lg px-4 py-3 focus:ring-2 transition-colors" style="border-color: rgba(197, 158, 67, 0.3); color: var(--cinza-escuro);" placeholder="seu@email.com" autocomplete="email">
+                                <input type="email" id="email" name="email" required class="form-input" placeholder="seu@email.com" autocomplete="email">
+                                <p class="form-error" id="emailError">Email inválido</p>
                             </div>
                             <div>
-                                <label for="phone" class="block text-sm font-medium mb-2 text-cinza-medio">Telemóvel</label>
-                                <input type="tel" id="phone" class="w-full bg-white/50 border rounded-lg px-4 py-3 focus:ring-2 transition-colors" style="border-color: rgba(197, 158, 67, 0.3); color: var(--cinza-escuro);" placeholder="96XXXXXXXX" autocomplete="tel">
+                                <label for="telemovel" class="block text-sm font-medium mb-2 text-cinza-medio">Telemóvel</label>
+                                <input type="tel" id="telemovel" name="telemovel" class="form-input" placeholder="96XXXXXXXX" autocomplete="tel" pattern="[0-9]{9}">
                             </div>
                         </div>
+                        
                         <div>
-                            <label for="subject" class="block text-sm font-medium mb-2 text-cinza-medio">Assunto *</label>
-                            <select id="subject" required class="w-full bg-white/50 border rounded-lg px-4 py-3 focus:ring-2 transition-colors" style="border-color: rgba(197, 158, 67, 0.3); color: var(--cinza-escuro);">
+                            <label for="assunto" class="block text-sm font-medium mb-2 text-cinza-medio">Assunto *</label>
+                            <select id="assunto" name="assunto" required class="form-select">
                                 <option value="">Selecione um assunto</option>
                                 <option value="contabilidade">Contabilidade</option>
                                 <option value="fiscalidade">Fiscalidade</option>
@@ -722,12 +817,24 @@
                                 <option value="seguros">Mediação de Seguros</option>
                                 <option value="outro">Outro</option>
                             </select>
+                            <p class="form-error" id="assuntoError">Selecione um assunto</p>
                         </div>
+                        
                         <div>
-                            <label for="message" class="block text-sm font-medium mb-2 text-cinza-medio">Mensagem *</label>
-                            <textarea id="message" required rows="4" class="w-full bg-white/50 border rounded-lg px-4 py-3 focus:ring-2 transition-colors" style="border-color: rgba(197, 158, 67, 0.3); color: var(--cinza-escuro);" placeholder="Como podemos ajudar?"></textarea>
+                            <label for="mensagem" class="block text-sm font-medium mb-2 text-cinza-medio">Mensagem *</label>
+                            <textarea id="mensagem" name="mensagem" required class="form-textarea" placeholder="Como podemos ajudar?"></textarea>
+                            <p class="form-error" id="mensagemError">Este campo é obrigatório</p>
                         </div>
-                        <button type="submit" class="btn-primary w-full py-4 rounded-full font-medium shadow-lg">
+                        
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" id="privacidade" name="privacidade" required class="form-checkbox mt-1">
+                            <label for="privacidade" class="text-sm text-cinza-medio">
+                                Aceito a <a href="#" class="text-ouro hover:underline">política de privacidade</a> *
+                            </label>
+                        </div>
+                        <p class="form-error" id="privacidadeError">Deve aceitar a política de privacidade</p>
+                        
+                        <button type="submit" id="submitBtn" class="btn-primary w-full py-4 rounded-full font-medium shadow-lg">
                             Enviar Mensagem
                         </button>
                     </form>
@@ -759,7 +866,26 @@
     </footer>
     </main>
 
+    <!-- Configuração da API (inline para simplicidade) -->
     <script>
+        // =================================================================
+        // 🔐 CONFIGURAÇÃO DA API
+        // =================================================================
+        // ⚠️ Esta chave é visível no frontend - serve para limitação básica
+        // Para produção com segurança total, usar backend proxy
+        const API_CONFIG = {
+            endpoint: '/api/sendContact',
+            apiKey: 'hv_prod_a1b2c3d4e5f6g7h8i9j0', // 🔐 Substituir pela chave real
+//            recipientEmail: REMOVED
+        };
+    </script>
+
+    <!-- Scripts -->
+    <script>
+        // =================================================================
+        // 🧭 UTILITÁRIOS GERAIS
+        // =================================================================
+        
         // Mobile Menu Toggle
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
@@ -779,13 +905,13 @@
         });
 
         // Intersection Observer for Animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+        const observerOptions = { threshold: 0.1 };
+					   
+							  
+						  
+		  
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -804,23 +930,236 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+										   
+									  
+					   
+												
                     document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
         });
 
-        // Form submission handler
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Obrigado pela sua mensagem! Entraremos em contacto brevemente.');
-            this.reset();
+        // =================================================================
+        // 📧 FORMULÁRIO DE CONTACTO - Lógica Completa
+        // =================================================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initContactForm();
+																					
+						 
         });
+
+        function initContactForm() {
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const formSuccess = document.getElementById('formSuccess');
+            const formError = document.getElementById('formError');
+            const formErrorMessage = document.getElementById('formErrorMessage');
+
+            if (!form) return;
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Reset UI
+                hideMessages();
+                let hasErrors = false;
+
+                // Validação de campos obrigatórios
+                const requiredFields = [
+                    { id: 'nome', errorId: 'nomeError', validator: v => v?.trim().length > 0 },
+                    { id: 'email', errorId: 'emailError', validator: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+                    { id: 'assunto', errorId: 'assuntoError', validator: v => v?.trim().length > 0 },
+                    { id: 'mensagem', errorId: 'mensagemError', validator: v => v?.trim().length > 0 },
+                    { id: 'privacidade', errorId: 'privacidadeError', validator: v => v === true }
+                ];
+
+                requiredFields.forEach(field => {
+                    const el = document.getElementById(field.id);
+                    const value = field.id === 'privacidade' ? el?.checked : el?.value;
+                    const errorEl = document.getElementById(field.errorId);
+                    
+                    if (!field.validator(value)) {
+                        showError(errorEl);
+                        hasErrors = true;
+                        if (!document.activeElement || document.activeElement !== el) {
+                            el?.focus();
+                        }
+                    } else {
+                        hideError(errorEl);
+                    }
+                });
+
+                if (hasErrors) return;
+
+                // Preparar dados
+                const formData = {
+                    nome: document.getElementById('nome')?.value?.trim(),
+                    email: document.getElementById('email')?.value?.trim(),
+                    empresa: document.getElementById('empresa')?.value?.trim() || '',
+                    telemovel: document.getElementById('telemovel')?.value?.trim() || '',
+                    assunto: document.getElementById('assunto')?.value?.trim(),
+                    mensagem: document.getElementById('mensagem')?.value?.trim(),
+                    privacidade: document.getElementById('privacidade')?.checked
+                };
+
+                // Formatar HTML do email
+                const emailHtml = formatContactEmail(formData);
+
+                // Loading state
+                setLoading(true);
+
+                try {
+                    // Chamar API
+                    const response = await fetch(API_CONFIG.endpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-api-key': API_CONFIG.apiKey
+                        },
+                        body: JSON.stringify({
+//                           ✅ NÃO enviar "to" — o backend define internamente // to: API_CONFIG.recipientEmail,
+                            subject: `📩 Novo Contacto: ${formData.assunto}`,
+                            html: emailHtml,
+                            // Dados extra para logging/validação
+                            nome: formData.nome,
+                            email: formData.email
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        showSuccess();
+                        form.reset();
+                        // Scroll para mensagem de sucesso
+                        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        throw new Error(result.error || 'Erro ao enviar mensagem');
+                    }
+
+                } catch (err) {
+                    console.error('❌ Form submission error:', err);
+                    
+                    let userMessage = 'Erro ao enviar mensagem. Tenta novamente.';
+                    if (err.message?.includes('401')) {
+                        userMessage = '🔐 Erro de configuração. Contacta o suporte.';
+                    } else if (err.message?.includes('400')) {
+                        userMessage = '📋 Verifica se preencheu todos os campos corretamente.';
+                    } else if (err.name === 'TypeError' && err.message?.includes('Failed to fetch')) {
+                        userMessage = '🌐 Erro de ligação. Verifica a tua internet.';
+                    }
+                    
+                    showError(formErrorMessage, userMessage);
+                    formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                } finally {
+                    setLoading(false);
+                }
+            });
+
+            // Remover erro ao começar a escrever
+            ['nome', 'email', 'assunto', 'mensagem'].forEach(fieldId => {
+                const el = document.getElementById(fieldId);
+                el?.addEventListener('input', () => {
+                    hideError(document.getElementById(`${fieldId}Error`));
+                });
+            });
+            document.getElementById('privacidade')?.addEventListener('change', () => {
+                hideError(document.getElementById('privacidadeError'));
+            });
+        }
+
+        /**
+         * Formata dados do formulário em HTML de email profissional
+         */
+        function formatContactEmail(data) {
+            const escapeHtml = (text) => {
+                if (!text) return '';
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            };
+
+            const timestamp = new Date().toLocaleString('pt-PT', {
+                dateStyle: 'medium',
+                timeStyle: 'short'
+            });
+
+            const assuntoLabels = {
+                'contabilidade': 'Contabilidade',
+                'fiscalidade': 'Fiscalidade',
+                'gestao': 'Apoio à Gestão',
+                'rh': 'Recursos Humanos',
+                'seguros': 'Mediação de Seguros',
+                'outro': 'Outro Assunto'
+            };
+
+            return `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><style>
+  body{font-family:Arial,sans-serif;line-height:1.6;color:#333;max-width:600px;margin:0 auto}
+  .header{background:linear-gradient(135deg,#c59e43,#e5c28e);color:#fff;padding:20px;text-align:center}
+  .content{background:#f9f9f9;padding:25px}
+  .field{margin:15px 0;padding:12px;background:#fff;border-left:4px solid #c59e43;border-radius:4px}
+  .label{font-weight:700;color:#666;font-size:.9em;margin-bottom:4px}
+  .value{color:#222;word-wrap:break-word}
+  .footer{text-align:center;padding:15px;color:#999;font-size:.85em}
+</style></head>
+<body>
+  <div class="header"><h2 style="margin:0">📩 Novo Contacto</h2><p style="margin:5px 0 0">${timestamp}</p></div>
+  <div class="content">
+    <div class="field"><div class="label">👤 Nome</div><div class="value">${escapeHtml(data.nome)}</div></div>
+    <div class="field"><div class="label">📧 Email</div><div class="value"><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></div></div>
+    ${data.empresa ? `<div class="field"><div class="label">🏢 Empresa</div><div class="value">${escapeHtml(data.empresa)}</div></div>` : ''}
+    ${data.telemovel ? `<div class="field"><div class="label">📞 Telemóvel</div><div class="value">${escapeHtml(data.telemovel)}</div></div>` : ''}
+    <div class="field"><div class="label">📝 Assunto</div><div class="value">${escapeHtml(assuntoLabels[data.assunto] || data.assunto)}</div></div>
+    <div class="field"><div class="label">💬 Mensagem</div><div class="value" style="white-space:pre-wrap">${escapeHtml(data.mensagem)}</div></div>
+  </div>
+  <div class="footer">Hipóteses Válidas • Formulário de contacto</div>
+</body>
+</html>`.trim();
+        }
+
+        /**
+         * UI Helpers
+         */
+        function showError(el, message) {
+            if (message) el.textContent = message;
+            el.classList.add('visible');
+        }
+
+        function hideError(el) {
+            if (el) el.classList.remove('visible');
+        }
+
+        function hideMessages() {
+            document.getElementById('formSuccess')?.classList.remove('visible');
+            document.getElementById('formError')?.classList.remove('visible');
+        }
+
+        function showSuccess() {
+            hideMessages();
+            document.getElementById('formSuccess')?.classList.add('visible');
+        }
+
+        function setLoading(loading) {
+            const btn = document.getElementById('submitBtn');
+            if (!btn) return;
+            
+            if (loading) {
+                btn.classList.add('btn-loading');
+                btn.dataset.originalText = btn.textContent;
+                btn.textContent = 'A enviar...';
+                btn.disabled = true;
+            } else {
+                btn.classList.remove('btn-loading');
+                btn.textContent = btn.dataset.originalText || 'Enviar Mensagem';
+                btn.disabled = false;
+            }
+        }
     </script>
 </body>
 </html>
-
