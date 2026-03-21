@@ -1,131 +1,182 @@
 // =================================================================
-// 📧 FORMULÁRIO DE CONTACTO
+// 📧 FORMULÁRIO DE CONTACTO - frontend/js/contact.js
 // =================================================================
-// Campos:
-// - Obrigatórios: nome, email, assunto, mensagem, privacidade
-// - Opcionais: empresa, telemovel
+// Responsável por:
+// - Recolher dados do formulário
+// - Validar campos obrigatórios
+// - Chamar API /api/sendContact
+// - Mostrar feedback ao utilizador
 // =================================================================
 
 document.addEventListener('DOMContentLoaded', function() {
-  initContactForm();
+    initContactForm();
 });
 
 function initContactForm() {
-  const contactForm = document.getElementById('contactForm');
-  const formSuccess = document.getElementById('formSuccess');
-  const formError = document.getElementById('formError');
-  const submitBtn = contactForm?.querySelector('button[type="submit"]');
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formSuccess = document.getElementById('formSuccess');
+    const formError = document.getElementById('formError');
+    const formErrorMessage = document.getElementById('formErrorMessage');
 
-  // Validação de elementos
-  if (!contactForm || !formSuccess || !formError) {
-    console.error('❌ Elementos do formulário não encontrados');
-    return;
-  }
-
-  contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    // Reset UI
-    formSuccess.style.display = 'none';
-    formError.style.display = 'none';
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'A enviar...';
+    // Validação de elementos críticos
+    if (!form || !submitBtn || !formSuccess || !formError) {
+        console.error('❌ Elementos do formulário não encontrados');
+        return;
     }
 
-    try {
-      // 1️⃣ Recolher dados do formulário
-      const formData = new FormData(contactForm);
-      const data = {
-        nome: formData.get('nome')?.toString().trim(),
-        email: formData.get('email')?.toString().trim(),
-        empresa: formData.get('empresa')?.toString().trim() || '',
-        telemovel: formData.get('telemovel')?.toString().trim() || '',
-        assunto: formData.get('assunto')?.toString().trim(),
-        mensagem: formData.get('mensagem')?.toString().trim(),
-        privacidade: formData.get('privacidade') === 'on'
-      };
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-      // 2️⃣ Validação de campos obrigatórios
-      const requiredFields = ['nome', 'email', 'assunto', 'mensagem', 'privacidade'];
-      const missing = requiredFields.filter(field => {
-        if (field === 'privacidade') return !data.privacidade;
-        return !data[field];
-      });
+        // Reset UI
+        hideMessages();
+        let hasErrors = false;
 
-      if (missing.length > 0) {
-        throw new Error(`Campos obrigatórios em falta: ${missing.join(', ')}`);
-      }
+        // =================================================================
+        // 1️⃣ VALIDAÇÃO DE CAMPOS OBRIGATÓRIOS
+        // =================================================================
+        const requiredFields = [
+            { id: 'nome', errorId: 'nomeError', validator: v => v?.trim().length > 0 },
+            { id: 'email', errorId: 'emailError', validator: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+            { id: 'assunto', errorId: 'assuntoError', validator: v => v?.trim().length > 0 },
+            { id: 'mensagem', errorId: 'mensagemError', validator: v => v?.trim().length > 0 },
+            { id: 'privacidade', errorId: 'privacidadeError', validator: v => v === true }
+        ];
 
-      // 3️⃣ Estruturar HTML do email
-      const htmlContent = `
-<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><style>
-  body{font-family:Arial,sans-serif;line-height:1.6;color:#333;max-width:600px;margin:0 auto}
-  .header{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:20px;text-align:center}
-  .content{background:#f9f9f9;padding:25px}
-  .field{margin:15px 0;padding:12px;background:#fff;border-left:4px solid #667eea;border-radius:4px}
-  .label{font-weight:700;color:#666;font-size:.9em;margin-bottom:4px}
-  .value{color:#222;word-wrap:break-word}
-  .footer{text-align:center;padding:15px;color:#999;font-size:.85em}
-</style></head>
-<body>
-  <div class="header"><h2 style="margin:0">📩 Novo Contacto</h2></div>
-  <div class="content">
-    <div class="field"><div class="label">👤 Nome</div><div class="value">${escapeHtml(data.nome)}</div></div>
-    <div class="field"><div class="label">📧 Email</div><div class="value">${escapeHtml(data.email)}</div></div>
-    ${data.empresa ? `<div class="field"><div class="label">🏢 Empresa</div><div class="value">${escapeHtml(data.empresa)}</div></div>` : ''}
-    ${data.telemovel ? `<div class="field"><div class="label">📞 Telemovel</div><div class="value">${escapeHtml(data.telemovel)}</div></div>` : ''}
-    <div class="field"><div class="label">📝 Assunto</div><div class="value">${escapeHtml(data.assunto)}</div></div>
-    <div class="field"><div class="label">💬 Mensagem</div><div class="value" style="white-space:pre-wrap">${escapeHtml(data.mensagem)}</div></div>
-  </div>
-  <div class="footer">theSmoohPath • Formulário de contacto</div>
-</body>
-</html>`.trim();
+        requiredFields.forEach(field => {
+            const el = document.getElementById(field.id);
+            const value = field.id === 'privacidade' ? el?.checked : el?.value;
+            const errorEl = document.getElementById(field.errorId);
+            
+            if (!field.validator(value)) {
+                showError(errorEl);
+                hasErrors = true;
+                if (!document.activeElement || document.activeElement !== el) {
+                    el?.focus();
+                }
+            } else {
+                hideError(errorEl);
+            }
+        });
 
-      // 4️⃣ Chamar API
-      const response = await fetch('/api/sendContact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          to: 'geral@thesmoothpath.pt',  // Email que RECEBE (podes mover para variável)
-          subject: `📩 ${data.assunto}`,
-          html: htmlContent
-        })
-      });
+        if (hasErrors) return;
 
-      const result = await response.json();
+        // =================================================================
+        // 2️⃣ RECOLHER DADOS DO FORMULÁRIO (APENAS CAMPOS CRUS)
+        // =================================================================
+        const formData = {
+            nome: document.getElementById('nome')?.value?.trim(),
+            email: document.getElementById('email')?.value?.trim(),
+            empresa: document.getElementById('empresa')?.value?.trim() || '',
+            telemovel: document.getElementById('telemovel')?.value?.trim() || '',
+            assunto: document.getElementById('assunto')?.value?.trim(),  // ex: "fiscalidade"
+            mensagem: document.getElementById('mensagem')?.value?.trim(),
+            privacidade: document.getElementById('privacidade')?.checked
+        };
 
-      // 5️⃣ Processar resposta
-      if (response.ok && result.success) {
-        formSuccess.style.display = 'block';
-        contactForm.reset();
-        setTimeout(() => { formSuccess.style.display = 'none'; }, 5000);
-      } else {
-        throw new Error(result.error || 'Erro ao enviar mensagem');
-      }
+        // =================================================================
+        // 3️⃣ CHAMAR API (PAYLOAD CORRETO - SEM subject/html pré-formatados)
+        // =================================================================
+        setLoading(true);
 
-    } catch (err) {
-      console.error('❌ Erro:', err.message);
-      formError.textContent = '✕ ' + (err.message || 'Erro ao enviar mensagem');
-      formError.style.display = 'block';
-      setTimeout(() => { formError.style.display = 'none'; }, 6000);
-    } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar';
-      }
-    }
-  });
+        try {
+            const response = await fetch(API_CONFIG.endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': API_CONFIG.apiKey
+                },
+                body: JSON.stringify({
+                    // ✅ Enviar APENAS dados do formulário (o backend formata o email)
+                    nome: formData.nome,
+                    email: formData.email,
+                    empresa: formData.empresa,
+                    telemovel: formData.telemovel,
+                    assunto: formData.assunto,
+                    mensagem: formData.mensagem,
+                    privacidade: formData.privacidade
+                })
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                showSuccess();
+                form.reset();
+                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                throw new Error(result.error || 'Erro ao enviar mensagem');
+            }
+
+        } catch (err) {
+            console.error('❌ Form submission error:', err);
+            
+            let userMessage = 'Erro ao enviar mensagem. Tenta novamente.';
+            if (err.message?.includes('401')) {
+                userMessage = '🔐 Erro de configuração. Contacta o suporte.';
+            } else if (err.message?.includes('400')) {
+                userMessage = '📋 Verifica se preencheu todos os campos corretamente.';
+            } else if (err.name === 'TypeError' && err.message?.includes('Failed to fetch')) {
+                userMessage = '🌐 Erro de ligação. Verifica a tua internet.';
+            }
+            
+            showError(formErrorMessage, userMessage);
+            formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+        } finally {
+            setLoading(false);
+        }
+    });
+
+    // =================================================================
+    // 4️⃣ REMOVER ERROS AO COMEÇAR A ESCREVER (UX)
+    // =================================================================
+    ['nome', 'email', 'assunto', 'mensagem'].forEach(fieldId => {
+        const el = document.getElementById(fieldId);
+        el?.addEventListener('input', () => {
+            hideError(document.getElementById(`${fieldId}Error`));
+        });
+    });
+    document.getElementById('privacidade')?.addEventListener('change', () => {
+        hideError(document.getElementById('privacidadeError'));
+    });
 }
 
-/**
- * Escape HTML para prevenir XSS
- */
-function escapeHtml(text) {
-  if (!text) return '';
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
+// =================================================================
+// 🎨 UI HELPERS
+// =================================================================
+
+function showError(el, message) {
+    if (message) el.textContent = message;
+    el.classList.add('visible');
+}
+
+function hideError(el) {
+    if (el) el.classList.remove('visible');
+}
+
+function hideMessages() {
+    document.getElementById('formSuccess')?.classList.remove('visible');
+    document.getElementById('formError')?.classList.remove('visible');
+}
+
+function showSuccess() {
+    hideMessages();
+    document.getElementById('formSuccess')?.classList.add('visible');
+}
+
+function setLoading(loading) {
+    const btn = document.getElementById('submitBtn');
+    if (!btn) return;
+    
+    if (loading) {
+        btn.classList.add('btn-loading');
+        btn.dataset.originalText = btn.textContent;
+        btn.textContent = 'A enviar...';
+        btn.disabled = true;
+    } else {
+        btn.classList.remove('btn-loading');
+        btn.textContent = btn.dataset.originalText || 'Enviar Mensagem';
+        btn.disabled = false;
+    }
 }
