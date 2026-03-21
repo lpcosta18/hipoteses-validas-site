@@ -3,6 +3,9 @@ vercel.json
 
 .claude
 CLAUDE.md
+.claude/
+
+node_modules/
 
 .env*.local
 .env
