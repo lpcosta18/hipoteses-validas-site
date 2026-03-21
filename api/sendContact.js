@@ -92,7 +92,8 @@ export default async function handler(req, res) {
 }
 
 /**
- * Formata dados do formulário em HTML de email
+ * Formata dados do formulário em HTML de email profissional
+ * Design limpo com cores da Hipóteses Válidas
  */
 function formatContactEmail(data) {
   const escapeHtml = (text) => {
@@ -119,29 +120,144 @@ function formatContactEmail(data) {
     'outro': 'Outro Assunto'
   };
 
-  return `
+  // =================================================================
+  // 📧 HTML EMAIL (Design Limpo - Cores Hipóteses Válidas)
+  // =================================================================
+  const html = `
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"><style>
-  body{font-family:Arial,sans-serif;line-height:1.6;color:#333;max-width:600px;margin:0 auto}
-  .header{background:linear-gradient(135deg,#c59e43,#e5c28e);color:#fff;padding:20px;text-align:center}
-  .content{background:#f9f9f9;padding:25px}
-  .field{margin:15px 0;padding:12px;background:#fff;border-left:4px solid #c59e43;border-radius:4px}
-  .label{font-weight:700;color:#666;font-size:.9em;margin-bottom:4px}
-  .value{color:#222;word-wrap:break-word}
-  .footer{text-align:center;padding:15px;color:#999;font-size:.85em}
-</style></head>
-<body>
-  <div class="header"><h2 style="margin:0">📩 Novo Contacto</h2><p style="margin:5px 0 0">${timestamp}</p></div>
-  <div class="content">
-    <div class="field"><div class="label">👤 Nome</div><div class="value">${escapeHtml(data.nome)}</div></div>
-    <div class="field"><div class="label">📧 Email de Resposta</div><div class="value"><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></div></div>
-    ${data.empresa ? `<div class="field"><div class="label">🏢 Empresa</div><div class="value">${escapeHtml(data.empresa)}</div></div>` : ''}
-    ${data.telemovel ? `<div class="field"><div class="label">📞 Telemóvel</div><div class="value">${escapeHtml(data.telemovel)}</div></div>` : ''}
-    <div class="field"><div class="label">📝 Assunto</div><div class="value">${escapeHtml(assuntoLabels[data.assunto] || data.assunto)}</div></div>
-    <div class="field"><div class="label">💬 Mensagem</div><div class="value" style="white-space:pre-wrap">${escapeHtml(data.mensagem)}</div></div>
-  </div>
-  <div class="footer">Hipóteses Válidas • Formulário de contacto</div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo Contacto - Hipóteses Válidas</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f8f5f0;">
+  <table role="presentation" style="width: 100%; border-collapse: collapse;">
+    <tr>
+      <td align="center" style="padding: 40px 20px;">
+        <table role="presentation" style="max-width: 600px; width: 100%; border-collapse: collapse; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(197, 158, 67, 0.15);">
+          
+          <!-- Header -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #c59e43 0%, #e5c28e 100%); padding: 30px; text-align: center;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">📩 Novo Contacto</h1>
+              <p style="margin: 8px 0 0 0; color: #ffffff; opacity: 0.95; font-size: 14px;">Hipóteses Válidas</p>
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td style="padding: 30px;">
+              
+              <!-- Dados do Cliente -->
+              <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #faf0e6; border-radius: 8px; overflow: hidden; margin-bottom: 20px;">
+                <tr>
+                  <td style="padding: 20px;">
+                    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                      <tr>
+                        <td style="padding: 8px 0; border-bottom: 1px solid #e5c28e;">
+                          <span style="color: #666666; font-size: 13px; font-weight: 600;">👤 NOME</span>
+                          <p style="margin: 4px 0 0 0; color: #1a1a1a; font-size: 15px;">${escapeHtml(data.nome)}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 8px 0; border-bottom: 1px solid #e5c28e;">
+                          <span style="color: #666666; font-size: 13px; font-weight: 600;">📧 EMAIL</span>
+                          <p style="margin: 4px 0 0 0; color: #1a1a1a; font-size: 15px;">
+                            <a href="mailto:${escapeHtml(data.email)}" style="color: #c59e43; text-decoration: none;">${escapeHtml(data.email)}</a>
+                          </p>
+                        </td>
+                      </tr>
+                      ${data.empresa ? `
+                      <tr>
+                        <td style="padding: 8px 0; border-bottom: 1px solid #e5c28e;">
+                          <span style="color: #666666; font-size: 13px; font-weight: 600;">🏢 EMPRESA</span>
+                          <p style="margin: 4px 0 0 0; color: #1a1a1a; font-size: 15px;">${escapeHtml(data.empresa)}</p>
+                        </td>
+                      </tr>
+                      ` : ''}
+                      ${data.telemovel ? `
+                      <tr>
+                        <td style="padding: 8px 0; border-bottom: 1px solid #e5c28e;">
+                          <span style="color: #666666; font-size: 13px; font-weight: 600;">📞 TELEMÓVEL</span>
+                          <p style="margin: 4px 0 0 0; color: #1a1a1a; font-size: 15px;">
+                            <a href="tel:${escapeHtml(data.telemovel)}" style="color: #c59e43; text-decoration: none;">${escapeHtml(data.telemovel)}</a>
+                          </p>
+                        </td>
+                      </tr>
+                      ` : ''}
+                      <tr>
+                        <td style="padding: 8px 0;">
+                          <span style="color: #666666; font-size: 13px; font-weight: 600;">📝 ASSUNTO</span>
+                          <p style="margin: 4px 0 0 0; color: #1a1a1a; font-size: 15px;">${escapeHtml(assuntoLabels[data.assunto] || data.assunto)}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 8px 0;">
+                          <span style="color: #666666; font-size: 13px; font-weight: 600;">🕐 DATA/HORA</span>
+                          <p style="margin: 4px 0 0 0; color: #1a1a1a; font-size: 15px;">${timestamp}</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              
+              <!-- Mensagem -->
+              <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #ffffff; border-radius: 8px; border: 1px solid #e0e0e0; overflow: hidden;">
+                <tr>
+                  <td style="padding: 20px;">
+                    <h3 style="margin: 0 0 12px 0; color: #c59e43; font-size: 16px; font-weight: 600;">💬 MENSAGEM</h3>
+                    <p style="margin: 0; color: #1a1a1a; font-size: 15px; line-height: 1.6; white-space: pre-wrap;">${escapeHtml(data.mensagem)}</p>
+                  </td>
+                </tr>
+              </table>
+              
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f5f5f5; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0;">
+              <p style="margin: 0; color: #666666; font-size: 12px; line-height: 1.5;">
+                Este email foi enviado automaticamente através do formulário de contacto<br>
+                <strong style="color: #c59e43;">Hipóteses Válidas, Lda.</strong>
+              </p>
+              <p style="margin: 8px 0 0 0; color: #999999; font-size: 11px;">
+                Rua Joaquim Maria Simões, 1 • 2560-281 Torres Vedras
+              </p>
+            </td>
+          </tr>
+          
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
-</html>`.trim();
+</html>
+  `.trim();
+
+  // =================================================================
+  // 📝 TEXTO SIMPLES (fallback para email clients que não suportam HTML)
+  // =================================================================
+  const text = `
+NOVO CONTACTO - Hipóteses Válidas
+=================================
+
+👤 NOME: ${data.nome}
+📧 EMAIL: ${data.email}
+${data.empresa ? `🏢 EMPRESA: ${data.empresa}` : ''}
+${data.telemovel ? `📞 TELEMÓVEL: ${data.telemovel}` : ''}
+📝 ASSUNTO: ${assuntoLabels[data.assunto] || data.assunto}
+🕐 DATA/HORA: ${timestamp}
+
+💬 MENSAGEM:
+${data.mensagem}
+
+---
+Este email foi enviado automaticamente através do formulário de contacto
+Hipóteses Válidas, Lda. • Rua Joaquim Maria Simões, 1 • 2560-281 Torres Vedras
+  `.trim();
+
+  return { html, text };
 }
