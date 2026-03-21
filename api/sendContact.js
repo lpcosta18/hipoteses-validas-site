@@ -149,7 +149,7 @@ function formatContactEmail(data) {
           
           <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, #c59e43 0%, #e5c28e 100%); padding: 20px; text-align: center;">
+            <td style="background-color: #c59e43; padding: 20px; text-align: center;">
               <h1 style="margin: 0; color: #ffffff; font-size: 20px; font-weight: 600;">Novo Contacto</h1>
               <p style="margin: 5px 0 0 0; color: #ffffff; opacity: 0.95; font-size: 13px;">Hipóteses Válidas</p>
             </td>
@@ -162,11 +162,11 @@ function formatContactEmail(data) {
               <!-- Dados do Cliente -->
               <div style="background-color: #faf0e6; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
                 <p style="margin: 8px 0; color: #1a1a1a; font-size: 14px;"><strong>Nome:</strong> ${escapeHtml(data.nome)}</p>
-                <p style="margin: 8px 0; color: #1a1a1a; font-size: 14px;"><strong>Email:</strong> <a href="mailto:${escapeHtml(data.email)}" style="color: #c59e43; text-decoration: none;">${escapeHtml(data.email)}</a></p>
                 ${data.empresa ? `<p style="margin: 8px 0; color: #1a1a1a; font-size: 14px;"><strong>Empresa:</strong> ${escapeHtml(data.empresa)}</p>` : ''}
+                <p style="margin: 8px 0; color: #1a1a1a; font-size: 14px;"><strong>Email:</strong> <a href="mailto:${escapeHtml(data.email)}" style="color: #c59e43; text-decoration: none;">${escapeHtml(data.email)}</a></p>
                 ${data.telemovel ? `<p style="margin: 8px 0; color: #1a1a1a; font-size: 14px;"><strong>Telemóvel:</strong> <a href="tel:${escapeHtml(data.telemovel)}" style="color: #c59e43; text-decoration: none;">${escapeHtml(data.telemovel)}</a></p>` : ''}
                 <p style="margin: 8px 0; color: #1a1a1a; font-size: 14px;"><strong>Assunto:</strong> ${escapeHtml(assuntoLabels[data.assunto] || data.assunto)}</p>
-                <p style="margin: 8px 0; color: #666666; font-size: 12px;"><strong>Data/Hora:</strong> ${timestamp}</p>
+                <p style="margin: 8px 0; color: #1a1a1a; font-size: 14px;"><strong>Data/Hora:</strong> ${timestamp}</p>
               </div>
               
               <!-- Mensagem -->
