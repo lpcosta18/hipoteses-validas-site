@@ -160,9 +160,27 @@ function hideMessages() {
     document.getElementById('formError')?.classList.remove('visible');
 }
 
+// Substitui showSuccess() por:
 function showSuccess() {
-    hideMessages();
-    document.getElementById('formSuccess')?.classList.add('visible');
+  const form = document.getElementById('contactForm');
+  const successCard = document.getElementById('formSuccessCard');
+  
+  if (form) form.classList.add('hidden');
+  if (successCard) {
+    successCard.classList.add('visible');
+    successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  if (form) form.reset();
+}
+
+// Adiciona esta função:
+function resetFormUI() {
+  const form = document.getElementById('contactForm');
+  const successCard = document.getElementById('formSuccessCard');
+  
+  if (form) form.classList.remove('hidden');
+  if (successCard) successCard.classList.remove('visible');
+  document.querySelectorAll('.form-error').forEach(el => el.classList.remove('visible'));
 }
 
 function setLoading(loading) {

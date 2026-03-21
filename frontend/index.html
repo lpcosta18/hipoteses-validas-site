@@ -59,18 +59,9 @@
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-					   
-		 
         ::-webkit-scrollbar-track { background: var(--areia); }
-									 
-		 
         ::-webkit-scrollbar-thumb { background: var(--ouro); border-radius: 4px; }
-									
-							   
-		 
         ::-webkit-scrollbar-thumb:hover { background: var(--ouro-claro); }
-										  
-		 
 
         /* Glassmorphism */
         .glass {
@@ -79,14 +70,12 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(197, 158, 67, 0.2);
         }
-
         .glass-card {
             background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,245,240,0.9) 100%);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(197, 158, 67, 0.15);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
         .glass-card:hover {
             transform: translateY(-5px);
             border-color: rgba(197, 158, 67, 0.4);
@@ -102,84 +91,25 @@
         }
 
         /* Animations */
-					 
-					   
-										
         .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-		 
-
-							 
-					   
         .fade-in-up.visible { opacity: 1; transform: translateY(0); }
-		 
-
-					   
-					   
-										 
         .fade-in-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-		 
-
-							   
-					   
         .fade-in-left.visible { opacity: 1; transform: translateX(0); }
-		 
-
-						
-					   
-										
         .fade-in-right { opacity: 0; transform: translateX(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-		 
-
-								
-					   
         .fade-in-right.visible { opacity: 1; transform: translateX(0); }
-		 
 
         /* Background */
         .bg-mesh {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
-				   
-					
-						 
-						  
-						
             background: linear-gradient(180deg, var(--areia) 0%, #f0ede6 100%);
         }
-
         .blob {
             position: absolute; filter: blur(80px); opacity: 0.35; border-radius: 50%;
-							   
-						  
-							   
             animation: move 25s infinite alternate ease-in-out;
         }
-
-				 
-					
-					   
-						 
-						  
         .blob-1 { top: 5%; right: 10%; width: 500px; height: 500px; background: radial-gradient(circle, var(--ouro-claro) 0%, transparent 70%); animation-delay: 0s; }
-								
-		 
-
-				 
-						
-					 
-						 
-						  
         .blob-2 { bottom: 10%; left: 5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(197, 158, 67, 0.25) 0%, transparent 70%); animation-delay: -8s; }
-								 
-		 
-
-				 
-					 
-					  
-						 
-						  
         .blob-3 { top: 40%; left: 50%; width: 350px; height: 350px; background: radial-gradient(circle, rgba(229, 194, 142, 0.2) 0%, transparent 70%); animation-delay: -15s; }
-								  
-		 
 
         @keyframes move {
             0% { transform: translate(0, 0) scale(1); }
@@ -190,51 +120,19 @@
         }
 
         /* Nav Link */
-				   
-							   
         .nav-link { position: relative; color: var(--cinza-medio); }
-		 
-
-						 
         .nav-link:hover { color: var(--ouro); }
-		 
-
         .nav-link::after {
             content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
-							   
-					 
-						
-						 
-					
             background: linear-gradient(90deg, var(--ouro), var(--ouro-claro));
             transition: width 0.3s ease;
         }
-
         .nav-link:hover::after { width: 100%; }
-						
-		 
 
         /* Button Styles */
         .btn-primary {
             background: linear-gradient(135deg, var(--ouro) 0%, var(--ouro-claro) 100%);
-						 
-									  
-		 
-
-							
-										
-																  
-		 
-
-						
-										  
-							   
             color: white; transition: all 0.3s ease;
-		 
-
-							  
-									
-						 
         }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(197, 158, 67, 0.5); }
         .btn-secondary { border: 2px solid var(--ouro); color: var(--ouro); transition: all 0.3s ease; }
@@ -243,92 +141,51 @@
         /* Line Decoration */
         .line-decoration {
             width: 80px; height: 3px;
-						
             background: linear-gradient(90deg, var(--ouro), var(--ouro-claro));
-							 
             margin: 1.5rem 0; border-radius: 2px;
         }
 
         /* Image Hover Effect */
-						
-							 
         .img-container { overflow: hidden; position: relative; }
-		 
-
-							
         .img-container img { transition: transform 0.6s ease; }
-		 
-
         .img-container:hover img { transform: scale(1.05); }
-								   
-		 
-
+		
         /* Service Card */
         .service-card {
-							  
             background: white; border: 1px solid rgba(197, 158, 67, 0.15);
             transition: all 0.4s ease;
         }
-
         .service-card:hover {
-									  
             border-color: var(--ouro); transform: translateY(-8px);
             box-shadow: 0 20px 40px -10px rgba(197, 158, 67, 0.2);
         }
-
         .service-icon {
-						
             width: 60px; height: 60px;
             background: linear-gradient(135deg, var(--ouro), var(--ouro-claro));
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-						  
-								
-									
             transition: all 0.3s ease;
         }
         .service-card:hover .service-icon { transform: rotate(10deg) scale(1.1); }
-										   
-												
-		 
-
 
         /* Smooth Scroll */
-			  
         html { scroll-behavior: smooth; }
-		 
 
         /* Selection */
-					 
         ::selection { background: var(--ouro); color: white; }
-						 
-		 
 
         /* Map Container */
         .map-container {
             border-radius: 20px; overflow: hidden;
-							 
             border: 1px solid rgba(197, 158, 67, 0.2);
         }
 
         /* Logo Styles */
         .logo-header { height: 45px; width: auto; }
-						 
-						
-		 
-
         .logo-footer { height: 40px; width: auto; }
-						 
-						
-		 
-
-					
         .logo-icon { height: 32px; width: 32px; }
-						
-		 
 
         /* Color Utility Classes */
         .text-ouro { color: var(--ouro); }
-							   
         .text-ouro-claro { color: var(--ouro-claro); }
         .text-cinza-escuro { color: var(--cinza-escuro); }
         .text-cinza-medio { color: var(--cinza-medio); }
@@ -452,6 +309,103 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+		/* =================================================================
+   🎉 SUCCESS STATE STYLES
+   ================================================================= */
+.form-success-card {
+  display: none;
+  text-align: center;
+  padding: 40px 30px;
+  animation: slideUpFade 0.4s ease-out;
+}
+
+.form-success-card.visible {
+  display: block;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px -10px rgba(22, 163, 74, 0.4);
+}
+
+.success-icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: white;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.success-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cinza-escuro);
+  margin: 0 0 12px 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.success-message {
+  font-size: 1rem;
+  color: var(--cinza-medio);
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+}
+
+.success-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ouro);
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid var(--ouro);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.success-action:hover {
+  background: var(--ouro);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.success-action i {
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.success-action:hover i {
+  transform: translateX(-3px);
+}
+
+/* Hide form when success is visible */
+#contactForm.hidden {
+  display: none;
+}
     </style>
 </head>
 <body class="antialiased">
@@ -774,13 +728,21 @@
                 <div class="glass rounded-3xl p-8 fade-in-right" style="border-color: rgba(197, 158, 67, 0.2); transition-delay: 200ms;">
                     <h3 class="text-2xl font-bold mb-6 text-cinza-escuro">Envie-nos uma Mensagem</h3>
                     
-                    <!-- Success/Error Messages -->
-                    <div id="formSuccess" class="form-success">
-                        ✅ Mensagem enviada com sucesso! Entraremos em contacto brevemente.
-                    </div>
-                    <div id="formError" class="form-error">
-                        ❌ <span id="formErrorMessage">Erro ao enviar mensagem.</span>
-                    </div>
+<!-- Substitui as divs atuais por: -->
+<div id="formSuccessCard" class="form-success-card">
+  <div class="success-icon">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  </div>
+  <h3 class="success-title">Mensagem enviada! ✅</h3>
+  <p class="success-message">Obrigado pelo teu contacto.<br>Entraremos em contacto brevemente.</p>
+  <button type="button" class="success-action" onclick="resetFormUI()">
+    <i class="fas fa-arrow-left"></i> Enviar outra mensagem
+  </button>
+</div>
+
+<div id="formError" class="form-error" style="background:#fef2f2;border:1px solid #fecaca;border-left:4px solid #dc2626;border-radius:0.5rem;padding:1rem;color:#991b1b;font-size:0.9rem;display:none;">
+  ❌ <span id="formErrorMessage">Erro ao enviar mensagem.</span>
+</div>
                     
                     <form id="contactForm" class="space-y-5" novalidate>
                         <div>
@@ -909,12 +871,7 @@
 
         // Intersection Observer for Animations
         const observerOptions = { threshold: 0.1 };
-					   
-							  
-						  
-		  
-
-        const observer = new IntersectionObserver((entries) => {
+	    const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -934,240 +891,11 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-										   
-									  
-					   
-												
                     document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
         });
 	</script> 
-    <!-- Scripts
-    <script> 	
-        // =================================================================
-        // 📧 FORMULÁRIO DE CONTACTO - Lógica Completa
-        // =================================================================
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            initContactForm();
-																					
-						 
-        });
-
-        function initContactForm() {
-            const form = document.getElementById('contactForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const formSuccess = document.getElementById('formSuccess');
-            const formError = document.getElementById('formError');
-            const formErrorMessage = document.getElementById('formErrorMessage');
-
-            if (!form) return;
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                // Reset UI
-                hideMessages();
-                let hasErrors = false;
-
-                // Validação de campos obrigatórios
-                const requiredFields = [
-                    { id: 'nome', errorId: 'nomeError', validator: v => v?.trim().length > 0 },
-                    { id: 'email', errorId: 'emailError', validator: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
-                    { id: 'assunto', errorId: 'assuntoError', validator: v => v?.trim().length > 0 },
-                    { id: 'mensagem', errorId: 'mensagemError', validator: v => v?.trim().length > 0 },
-                    { id: 'privacidade', errorId: 'privacidadeError', validator: v => v === true }
-                ];
-
-                requiredFields.forEach(field => {
-                    const el = document.getElementById(field.id);
-                    const value = field.id === 'privacidade' ? el?.checked : el?.value;
-                    const errorEl = document.getElementById(field.errorId);
-                    
-                    if (!field.validator(value)) {
-                        showError(errorEl);
-                        hasErrors = true;
-                        if (!document.activeElement || document.activeElement !== el) {
-                            el?.focus();
-                        }
-                    } else {
-                        hideError(errorEl);
-                    }
-                });
-
-                if (hasErrors) return;
-
-                // Preparar dados
-                const formData = {
-                    nome: document.getElementById('nome')?.value?.trim(),
-                    email: document.getElementById('email')?.value?.trim(),
-                    empresa: document.getElementById('empresa')?.value?.trim() || '',
-                    telemovel: document.getElementById('telemovel')?.value?.trim() || '',
-                    assunto: document.getElementById('assunto')?.value?.trim(),
-                    mensagem: document.getElementById('mensagem')?.value?.trim(),
-                    privacidade: document.getElementById('privacidade')?.checked
-                };
-
-                // Formatar HTML do email
-                const emailHtml = formatContactEmail(formData);
-
-                // Loading state
-                setLoading(true);
-
-                try {
-                    // Chamar API
-                    const response = await fetch(API_CONFIG.endpoint, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'x-api-key': API_CONFIG.apiKey
-                        },
-                        body: JSON.stringify({
-//                           ✅ NÃO enviar "to" — o backend define internamente // to: API_CONFIG.recipientEmail,
-                            subject: `📩 Novo Contacto: ${formData.assunto}`,
-                            html: emailHtml,
-                            // Dados extra para logging/validação
-                            nome: formData.nome,
-                            email: formData.email
-                        })
-                    });
-
-                    const result = await response.json();
-
-                    if (response.ok && result.success) {
-                        showSuccess();
-                        form.reset();
-                        // Scroll para mensagem de sucesso
-                        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    } else {
-                        throw new Error(result.error || 'Erro ao enviar mensagem');
-                    }
-
-                } catch (err) {
-                    console.error('❌ Form submission error:', err);
-                    
-                    let userMessage = 'Erro ao enviar mensagem. Tenta novamente.';
-                    if (err.message?.includes('401')) {
-                        userMessage = '🔐 Erro de configuração. Contacta o suporte.';
-                    } else if (err.message?.includes('400')) {
-                        userMessage = '📋 Verifica se preencheu todos os campos corretamente.';
-                    } else if (err.name === 'TypeError' && err.message?.includes('Failed to fetch')) {
-                        userMessage = '🌐 Erro de ligação. Verifica a tua internet.';
-                    }
-                    
-                    showError(formErrorMessage, userMessage);
-                    formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    
-                } finally {
-                    setLoading(false);
-                }
-            });
-
-            // Remover erro ao começar a escrever
-            ['nome', 'email', 'assunto', 'mensagem'].forEach(fieldId => {
-                const el = document.getElementById(fieldId);
-                el?.addEventListener('input', () => {
-                    hideError(document.getElementById(`${fieldId}Error`));
-                });
-            });
-            document.getElementById('privacidade')?.addEventListener('change', () => {
-                hideError(document.getElementById('privacidadeError'));
-            });
-        }
-
-        /**
-         * Formata dados do formulário em HTML de email profissional
-         */
-        function formatContactEmail(data) {
-            const escapeHtml = (text) => {
-                if (!text) return '';
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            };
-
-            const timestamp = new Date().toLocaleString('pt-PT', {
-                dateStyle: 'medium',
-                timeStyle: 'short'
-            });
-
-            const assuntoLabels = {
-                'contabilidade': 'Contabilidade',
-                'fiscalidade': 'Fiscalidade',
-                'gestao': 'Apoio à Gestão',
-                'rh': 'Recursos Humanos',
-                'seguros': 'Mediação de Seguros',
-                'outro': 'Outro Assunto'
-            };
-
-            return `
-<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><style>
-  body{font-family:Arial,sans-serif;line-height:1.6;color:#333;max-width:600px;margin:0 auto}
-  .header{background:linear-gradient(135deg,#c59e43,#e5c28e);color:#fff;padding:20px;text-align:center}
-  .content{background:#f9f9f9;padding:25px}
-  .field{margin:15px 0;padding:12px;background:#fff;border-left:4px solid #c59e43;border-radius:4px}
-  .label{font-weight:700;color:#666;font-size:.9em;margin-bottom:4px}
-  .value{color:#222;word-wrap:break-word}
-  .footer{text-align:center;padding:15px;color:#999;font-size:.85em}
-</style></head>
-<body>
-  <div class="header"><h2 style="margin:0">📩 Novo Contacto</h2><p style="margin:5px 0 0">${timestamp}</p></div>
-  <div class="content">
-    <div class="field"><div class="label">👤 Nome</div><div class="value">${escapeHtml(data.nome)}</div></div>
-    <div class="field"><div class="label">📧 Email</div><div class="value"><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></div></div>
-    ${data.empresa ? `<div class="field"><div class="label">🏢 Empresa</div><div class="value">${escapeHtml(data.empresa)}</div></div>` : ''}
-    ${data.telemovel ? `<div class="field"><div class="label">📞 Telemóvel</div><div class="value">${escapeHtml(data.telemovel)}</div></div>` : ''}
-    <div class="field"><div class="label">📝 Assunto</div><div class="value">${escapeHtml(assuntoLabels[data.assunto] || data.assunto)}</div></div>
-    <div class="field"><div class="label">💬 Mensagem</div><div class="value" style="white-space:pre-wrap">${escapeHtml(data.mensagem)}</div></div>
-  </div>
-  <div class="footer">Hipóteses Válidas • Formulário de contacto</div>
-</body>
-</html>`.trim();
-        }
-
-        /**
-         * UI Helpers
-         */
-        function showError(el, message) {
-            if (message) el.textContent = message;
-            el.classList.add('visible');
-        }
-
-        function hideError(el) {
-            if (el) el.classList.remove('visible');
-        }
-
-        function hideMessages() {
-            document.getElementById('formSuccess')?.classList.remove('visible');
-            document.getElementById('formError')?.classList.remove('visible');
-        }
-
-        function showSuccess() {
-            hideMessages();
-            document.getElementById('formSuccess')?.classList.add('visible');
-        }
-
-        function setLoading(loading) {
-            const btn = document.getElementById('submitBtn');
-            if (!btn) return;
-            
-            if (loading) {
-                btn.classList.add('btn-loading');
-                btn.dataset.originalText = btn.textContent;
-                btn.textContent = 'A enviar...';
-                btn.disabled = true;
-            } else {
-                btn.classList.remove('btn-loading');
-                btn.textContent = btn.dataset.originalText || 'Enviar Mensagem';
-                btn.disabled = false;
-            }
-        }
-    </script> 
-	-->
-	
 	
 </body>
 </html>
