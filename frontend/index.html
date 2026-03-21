@@ -309,8 +309,8 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-		/* =================================================================
-   🎉 SUCCESS STATE STYLES
+/* =================================================================
+   🎉 SUCCESS STATE STYLES - Card Elegante
    ================================================================= */
 .form-success-card {
   display: none;
@@ -324,14 +324,8 @@
 }
 
 @keyframes slideUpFade {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .success-icon {
@@ -402,6 +396,23 @@
   transform: translateX(-3px);
 }
 
+/* Esconde formulário quando sucesso está visível */
+#contactForm.hidden {
+  display: none;
+}
+
+/* Estilo do erro atualizado */
+.form-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #dc2626;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: #991b1b;
+  font-size: 0.9rem;
+  display: none;
+}
+.form-error.visible { display: block; }
     </style>
 </head>
 <body class="antialiased">
@@ -724,19 +735,25 @@
                 <div class="glass rounded-3xl p-8 fade-in-right" style="border-color: rgba(197, 158, 67, 0.2); transition-delay: 200ms;">
                     <h3 class="text-2xl font-bold mb-6 text-cinza-escuro">Envie-nos uma Mensagem</h3>
                     
-<!-- Substitui as divs atuais por: -->
+<!-- Success Card (inicialmente escondido) -->
 <div id="formSuccessCard" class="form-success-card">
   <div class="success-icon">
-    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
   </div>
   <h3 class="success-title">Mensagem enviada! ✅</h3>
-  <p class="success-message">Obrigado pelo teu contacto.<br>Entraremos em contacto brevemente.</p>
+  <p class="success-message">
+    Obrigado pelo teu contacto.<br>
+    Entraremos em contacto brevemente.
+  </p>
   <button type="button" class="success-action" onclick="resetFormUI()">
     <i class="fas fa-arrow-left"></i> Enviar outra mensagem
   </button>
 </div>
 
-<div id="formError" class="form-error" style="background:#fef2f2;border:1px solid #fecaca;border-left:4px solid #dc2626;border-radius:0.5rem;padding:1rem;color:#991b1b;font-size:0.9rem;display:none;">
+<!-- Error Message (mantém-se) -->
+<div id="formError" class="form-error">
   ❌ <span id="formErrorMessage">Erro ao enviar mensagem.</span>
 </div>
                     
