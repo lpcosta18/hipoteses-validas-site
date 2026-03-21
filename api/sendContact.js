@@ -1,13 +1,20 @@
 // api/sendContact.js
+// =================================================================
+// 📧 API ENDPOINT: /api/sendContact
+// =================================================================
+// Recebe dados do formulário → valida → formata email → envia via Nodemailer
+// =================================================================
+
 import { sendEmail } from '../lib/emailService.js'
 
 export default async function handler(req, res) {
+  // ✅ Apenas permite método POST
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // CORS
+  // ✅ CORS headers (permite apenas domínios autorizados)
   const origin = req.headers.origin;
   const allowedOrigins = [
     'https://hipoteses-validas.pt',
@@ -26,6 +33,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-api-key');
 
+  // Handle preflight requests
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -40,13 +48,13 @@ export default async function handler(req, res) {
       return res.status(401).json({ error: 'Unauthorized: Invalid API Key' });
     }
 
-    // 2. Receber dados do formulário (SEM "to")
+    // 2. Receber dados do formulário (SEM "to", "subject" ou "html" do frontend)
     const { nome, email, empresa, telemovel, assunto, mensagem, privacidade } = req.body;
 
     // 3. Validação de campos obrigatórios
     if (!nome || !email || !assunto || !mensagem || !privacidade) {
       return res.status(400).json({ 
-        error: 'Campos obrigatórios em falta' 
+        error: 'Campos obrigatórios em falta: nome, email, assunto, mensagem, privacidade' 
       });
     }
 
@@ -58,8 +66,8 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Erro de configuração do servidor' });
     }
 
-    // 5. Formatar HTML do email (podes mover para lib/ se preferires)
-    const emailHtml = formatContactEmail({ 
+    // 5. Formatar email HTML + texto simples (função local no final do ficheiro)
+    const emailContent = formatContactEmail({ 
       nome, 
       email, 
       empresa, 
@@ -68,16 +76,32 @@ export default async function handler(req, res) {
       mensagem 
     });
 
-    // 6. 🚨 IGNORE qualquer "to" vindo do frontend — usa sempre o do .env
+    // 6. Mapear assunto para label legível
+    const assuntoLabels = {
+      'contabilidade': 'Contabilidade',
+      'fiscalidade': 'Fiscalidade',
+      'gestao': 'Apoio à Gestão',
+      'rh': 'Recursos Humanos',
+      'seguros': 'Mediação de Seguros',
+      'outro': 'Outro Assunto'
+    };
+    const assuntoLabel = assuntoLabels[assunto] || assunto;
+
+    // 7. 🚨 Enviar email via service genérico (lib/emailService.js)
+    //    - to: definido no backend (.env) → SEGURO
+    //    - subject: prefixo fixo + assunto do utilizador
+    //    - html + text: formatados internamente
     await sendEmail({ 
-      to: TO_EMAIL,  // ← SEGURO: vem do .env, não do request
-      subject: `📩 Novo Contacto: ${assunto}`,
-      html: emailHtml
+      to: TO_EMAIL,
+      subject: `📩 Novo Contacto: ${assuntoLabel}`,
+      html: emailContent.html,
+      text: emailContent.text  // Fallback para email clients sem suporte a HTML
     });
 
-    // 7. Log para monitorização
-    console.log(`✅ Email enviado para ${TO_EMAIL} | De: ${email} | Assunto: ${assunto}`);
+    // 8. Log para monitorização (aparece nos logs da Vercel)
+    console.log(`✅ Email enviado para ${TO_EMAIL} | De: ${email} | Assunto: ${assuntoLabel}`);
 
+    // 9. Resposta de sucesso ao frontend
     return res.status(200).json({ 
       success: true, 
       message: 'Mensagem enviada com sucesso!' 
@@ -92,8 +116,10 @@ export default async function handler(req, res) {
 }
 
 /**
- * Formata dados do formulário em HTML de email profissional
+ * Formata dados do formulário em email HTML profissional + texto simples
  * Design limpo com cores da Hipóteses Válidas
+ * @param {Object} data - { nome, email, empresa, telemovel, assunto, mensagem }
+ * @returns {Object} { html: string, text: string }
  */
 function formatContactEmail(data) {
   const escapeHtml = (text) => {
@@ -121,7 +147,7 @@ function formatContactEmail(data) {
   };
 
   // =================================================================
-  // 📧 HTML EMAIL (Design Limpo - Cores Hipóteses Válidas)
+  // 📧 HTML EMAIL (Table-based para compatibilidade com todos email clients)
   // =================================================================
   const html = `
 <!DOCTYPE html>
@@ -238,7 +264,7 @@ function formatContactEmail(data) {
   `.trim();
 
   // =================================================================
-  // 📝 TEXTO SIMPLES (fallback para email clients que não suportam HTML)
+  // 📝 TEXTO SIMPLES (fallback para email clients sem suporte a HTML)
   // =================================================================
   const text = `
 NOVO CONTACTO - Hipóteses Válidas
